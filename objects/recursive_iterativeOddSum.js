@@ -3,11 +3,7 @@ function recursiveOddSumTo(number) {
     let sum = 1;
     let currentOddNumber = 1;
     let limitNumber = number;
-    if (number % 2 === 0) {
-        limitNumber -= 1;
-    } else {
-        limitNumber -= 2;
-    }
+    number % 2 === 0 ? limitNumber -= 1 : limitNumber -= 2;  
     function recursiveSum(recLimitNumber) {
         if (currentOddNumber < limitNumber) {
             currentOddNumber += 2;
@@ -26,16 +22,10 @@ function iterativeOddSumTo(number) {
     let sum = 1;
     let currentOddNumber = 1;
     let limitNumber = number;
-    if (number % 2 === 0) {
-        limitNumber -= 1;
-    } else {
-        limitNumber -= 2;
-    }
+    number % 2 === 0 ? limitNumber -= 1 : limitNumber -= 2;
     while(currentOddNumber < limitNumber) {
         currentOddNumber += 2;
         sum += currentOddNumber;
     }
     return sum;
 }
-
-
