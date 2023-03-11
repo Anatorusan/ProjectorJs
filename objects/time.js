@@ -1,12 +1,4 @@
-// 3 parameters
-// time units: days, hours, minutes, seconds
-// time units change the result
-// make default value for each time unit type
-// if the initial date is bigger than the end-date, the function must treat them vice-versa and operate correctly
-// consider date object
-
-function durationBetweenDates (initalDate = "02 Aug 1985", endDate = "04 Aug 1985", timeUnit = "days") {
-    //object with dates table
+function durationBetweenDates (initalDate = "14 Jan 1992", endDate = "11 March 2023", timeUnit = "days") {
     let duration;
     const timeUnitsTable = {
         seconds: 1000,
@@ -14,22 +6,27 @@ function durationBetweenDates (initalDate = "02 Aug 1985", endDate = "04 Aug 198
         hours: 3600000,
         days: 86400000
     }
-
-    const milisecInitalDateb = new Date(initalDate);
+    const milisecInitalDate = new Date(initalDate);
     const milisecEndDate = new Date(endDate);
-    let milisecDif = milisecEndDate - milisecInitalDateb;
+    let milisecDif = milisecEndDate - milisecInitalDate;
     if (milisecDif < 0) {
         milisecDif *= -1;
     };
-
-    //put switch here
-
-    if (timeUnit === "days") {
-        duration = milisecDif / timeUnitsTable.days
+    switch (true) {
+        case timeUnit === "seconds":
+            duration = milisecDif / timeUnitsTable.seconds;
+            break;
+        case timeUnit === "minutes":
+            duration = milisecDif / timeUnitsTable.minutes;
+            break;
+        case timeUnit === "hours":
+            duration = milisecDif / timeUnitsTable.hours;
+            break;
+        default:
+            duration = milisecDif / timeUnitsTable.days;
+            break;
     }
-
-    return duration;  
-
+    return `${duration} ${timeUnit}`;
 }
 
-console.log(durationBetweenDates());
+console.log(durationBetweenDates('14 Jan 1992', '11 March 2023', 'minutes'));
