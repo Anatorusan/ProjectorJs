@@ -1,3 +1,4 @@
+'use strict'
 function durationBetweenDates (initalDate = "14 Jan 1992", endDate = "11 March 2023", timeUnit = "days") {
     let duration;
     const timeUnitsTable = {
