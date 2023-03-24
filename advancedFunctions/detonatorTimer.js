@@ -9,7 +9,16 @@ const detonatorTimerRecr = (delay) => {
   }
 
 //setTimout nested
-
+const detonatorTimerNest = (delay) => {
+    setTimeout(function counter () {
+      if (delay < 0) {
+        return;
+      }
+      console.log(delay === 0 ? 'BOOM!' : delay);
+    delay -= 1;
+    setTimeout(counter, 1000, delay);
+    }, 1000, delay)
+  }
 
 //setInterval
 const detonatorTimerInterv = (delay) => {
@@ -21,3 +30,5 @@ const detonatorTimerInterv = (delay) => {
       }
     }, 1000, delay);
   }
+
+  detonatorTimerNest(10)
