@@ -5,7 +5,7 @@ const detonatorTimerRecr = (delay) => {
     }
     console.log(delay === 0 ? 'BOOM!' : delay);
     delay -= 1;
-    setTimeout(detonatorTimer, 1000, delay);
+    setTimeout(detonatorTimerRecr, 1000, delay);
   }
 
 //setTimout nested
