@@ -1,5 +1,5 @@
 const tribonacci = (signature,n) => {
-    const arr = signature;
+    const arr = [...signature];
     for(let count = 3; count < n; count ++) {
         arr.push(arr.slice(-3).reduce((a, b) => a + b, 0));
       }
