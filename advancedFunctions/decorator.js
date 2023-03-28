@@ -1,3 +1,4 @@
+'use strict'
 const tribonacci = (signature,n) => {
     const arr = [...signature];
     for(let count = 3; count < n; count ++) {
