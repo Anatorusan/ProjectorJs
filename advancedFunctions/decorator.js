@@ -1,7 +1,7 @@
 const tribonacci = (signature,n) => {
     const arr = signature;
     for(let count = 3; count < n; count ++) {
-        arr.push(arr.slice(-3).reduce((a, b) => a + b));
+        arr.push(arr.slice(-3).reduce((a, b) => a + b, 0));
       }
     arr.slice(0, n).forEach((element) => console.log(element));
   }
