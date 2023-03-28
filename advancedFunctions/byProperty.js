@@ -26,23 +26,32 @@ const movies = [
     ];
   
   
+  // const byProperty = (property, direction) => {
+  //   const modif = {
+  //     '>': 1,
+  //     '<': -1
+  //   }
+  //   const compareFunc = (a, b) => {
+  //     if (a[property] < b[property]) {
+  //       return -1 * modif[direction];
+  //     }
+  //     if (a[property] > b[property]) {
+  //       return 1 * modif[direction];
+  //     }
+  //     return 0;
+  //   }
+  //   return compareFunc;
+  // }
+
   const byProperty = (property, direction) => {
-    const modif = {
-      '>': 1,
-      '<': -1
-    }
     const compareFunc = (a, b) => {
       if (a[property] < b[property]) {
-        return -1 * modif[direction];
-      }
-      if (a[property] > b[property]) {
-        return 1 * modif[direction];
-      }
-      return 0;
+        return direction === '>' ? -1 : 1;
     }
+      return direction === '>' ? 1 : -1;
+  }
     return compareFunc;
   }
-    
   // console.log(movies.sort(byProperty('releaseYear', '>')));
   // console.log(movies.sort(byProperty('runningTimeInMinutes', '<')));
   // console.log(movies.sort(byProperty('movieName', '>')));
