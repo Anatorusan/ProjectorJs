@@ -23,17 +23,18 @@ const movies = [
     directedBy: 'McTiernan',
     runningTimeInMinutes: 107,
     },
-    ];
+  ];
 
-const byProperty = (property, direction) => {
-  const compareFunc = (a, b) => {
-    if (a[property] < b[property]) {
-      return direction === '>' ? -1 : 1;
+  const byProperty = (property, direction) => {
+    const compareFunc = (a, b) => {
+     if (a === b) {
+      return 0;
+     } 
+     const compareValue = a[property] < b[property] ? -1 : 1;
+     return direction === '>' ? compareValue : -compareValue;
     }
-    return direction === '>' ? 1 : -1;
+    return compareFunc;
   }
-  return compareFunc;
-}
 // console.log(movies.sort(byProperty('releaseYear', '>')));
 // console.log(movies.sort(byProperty('runningTimeInMinutes', '<')));
 // console.log(movies.sort(byProperty('movieName', '>')));

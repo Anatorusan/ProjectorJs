@@ -10,10 +10,10 @@ const tribonacci = (signature,n) => {
 const slower = (func, seconds) => {
   const wrapper = (...args) => {
     console.log(`Chill out bro, you will get you result in ${seconds} seconds`);
-    return setTimeout(func, seconds*1000, ...args);
+    return setTimeout(func.bind(this, ...args), seconds*1000);
   }
   return wrapper;
 }
 
 const slowedTribonacci = slower(tribonacci, 5);
-slowedTribonacci([1, 1, 4], 15);
+slowedTribonacci([0, 0, 3], 10);
