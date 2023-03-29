@@ -1,14 +1,15 @@
 //setTimout nested
 const detonatorTimerNest = (delay) => {
     let countDown = delay;
-    setTimeout(function counter () {
+    const counter = () => {
       if (countDown < 0) {
         return;
       }
       console.log(countDown === 0 ? 'BOOM!' : countDown);
       countDown -= 1;
       setTimeout(counter, 1000);
-    }, 1000);
+    } 
+    setTimeout(counter, 1000);
   }
 
 //setInterval
@@ -22,3 +23,17 @@ const detonatorTimerInterv = (delay) => {
       }
     }, 1000);
   }
+
+  detonatorTimerNest(10) 
+  
+  // const detonatorTimerNest = (delay) => {
+  //   let countDown = delay;
+  //   setTimeout(const counter = () => {
+  //     if (countDown < 0) {
+  //       return;
+  //     }
+  //     console.log(countDown === 0 ? 'BOOM!' : countDown);
+  //     countDown -= 1;
+  //     setTimeout(counter, 1000);
+  //   }, 1000);
+  // }
