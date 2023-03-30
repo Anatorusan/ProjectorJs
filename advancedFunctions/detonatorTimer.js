@@ -1,16 +1,12 @@
-//setTimout nested
-const detonatorTimerNest = (delay) => {
-    let countDown = delay;
-    const counter = () => {
-      if (countDown < 0) {
-        return;
-      }
-      console.log(countDown === 0 ? 'BOOM!' : countDown);
-      countDown -= 1;
-      setTimeout(counter, 1000);
-    } 
-    setTimeout(counter, 1000);
+//setTimout recursion
+const detonatorTimerRecr = (delay) => {
+  if (delay < 0) {
+    return
   }
+  console.log(delay === 0 ? 'BOOM!' : delay);
+  delay -= 1;
+  setTimeout(detonatorTimerRecr.bind(this, delay), 1000);
+}
 
 //setInterval
 const detonatorTimerInterv = (delay) => {
