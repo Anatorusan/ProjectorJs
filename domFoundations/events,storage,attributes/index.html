@@ -6,14 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Light Switcher</title>
     <link rel="stylesheet" href="main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="switcher-container">
         <div class="button-container">
-            <button class="lightSwitch">Turn Off</button>
+            <button id="swichButtn" class="lightSwitch">Turn Off</button>
         </div>
         <div class="output-container">
-            <p class="dateOutput">Last turn on: DD-MM-YYYY HH:MM:SS</p>
+            <p class="dateOutput">Last turn on: <span class="date">DD-MM-YYYY</span>
+                 <span class="time">HH:MM:SS</span></p>
         </div>
     </div>
     
