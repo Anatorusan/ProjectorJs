@@ -1,18 +1,19 @@
 //module for trigBox object
+//startapp function
+//module for switchListener
 'use strict'
 import { securedTrigSwitch } from "./trigBox.js";
 import { trigCheck } from "./trigBox.js";
+import { buttonListener } from "./buttonListener.js";
 
 
 //module for lightOn/Off
 //module for genDate
 //module for localStorage
-//module for switchListener
-//startapp function
 
 const backgr = document.querySelector('body');
 const dateField = document.querySelector('.dateOutput');
-const swBtn = document.getElementById('swichButtn');
+// const swBtn = document.getElementById('swichButtn');
 const btnOnOff = document.querySelector('.btnOnOff');
 const dateOnOff = document.querySelector('.dateOnOff');
 
@@ -23,6 +24,8 @@ const startAppFunc = () => {
     dateField.style.color = '#000';
     btnOnOff.innerHTML = ' Turn Off';
     dateOnOff.innerHTML = 'on';
+
+    buttonListener(lightSwitcher, textSwitcher, securedTrigSwitch);
 }
 
 document.addEventListener('DOMContentLoaded', startAppFunc);
@@ -37,9 +40,9 @@ const textSwitcher = () => {
     dateOnOff.innerHTML = !trigCheck() ? 'on' : 'off';
 }
 
-swBtn.addEventListener('click', lightSwitcher);
-swBtn.addEventListener('click', textSwitcher);
-swBtn.addEventListener('click', securedTrigSwitch);
+// swBtn.addEventListener('click', lightSwitcher);
+// swBtn.addEventListener('click', textSwitcher);
+// swBtn.addEventListener('click', securedTrigSwitch);
 
 
 //alternative bckgr color: #282727
