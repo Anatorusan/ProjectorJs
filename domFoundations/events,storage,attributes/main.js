@@ -1,3 +1,8 @@
+'use strict'
+//
+
+
+
 const backgr = document.querySelector('body');
 const dateField = document.querySelector('.dateOutput');
 const swBtn = document.getElementById('swichButtn');
@@ -6,13 +11,13 @@ const dateOnOff = document.querySelector('.dateOnOff');
 
 const trigBox = {
     trigger: 1,
-    trigOff() {
-        this.trigger -= 1;
-    },
-    trigOn() {
-        this.trigger += 1;
+    trigSwitch() {
+        this.trigger ? this.trigger -= 1 : this.trigger += 1;
+        console.log(`Trigger value: ${this.trigger}`);
     }
 }
+
+const securedTrigSwitch = trigBox.trigSwitch.bind(trigBox);
 
 const trigSwitcher = () => {
     trigBox.trigger ? trigBox.trigOff() : trigBox.trigOn();
@@ -33,7 +38,7 @@ const textSwitcher = () => {
 
 swBtn.addEventListener('click', lightSwitcher);
 swBtn.addEventListener('click', textSwitcher);
-swBtn.addEventListener('click', trigSwitcher)
+swBtn.addEventListener('click', securedTrigSwitch);
 
 
 //alternative bckgr color: #282727
@@ -87,3 +92,13 @@ swBtn.addEventListener('click', trigSwitcher)
 //     const savedList = localStorage.getItem(LS_KEY);
 //     return savedList ? JSON.parse(savedList) : [];
 // };
+
+// const trigBox = {
+//     trigger: 1,
+//     trigOff() {
+//         this.trigger -= 1;
+//     },
+//     trigOn() {
+//         this.trigger += 1;
+//     }
+// }
