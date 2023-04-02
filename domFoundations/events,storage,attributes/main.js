@@ -1,20 +1,15 @@
-//module for trigBox object
-//startapp function
-//module for buttonListener
-//module for lightSwitcher
-//module for textSwitcher
-//module for localStorage
-//module for dateRenderer
-
 'use strict'
+
+//TODO - make module to render the whole document
+
 import { securedTrigSwitch } from "./trigBox.js";
 import { trigCheck } from "./trigBox.js";
 import { buttonListener } from "./buttonListener.js";
-import { backgr } from "./lightSwitcher.js"; //temporary - waiting for renderer function and local storage
-import { dateField } from "./lightSwitcher.js"; //temporary - waiting for renderer function and local storage
+import { backgr } from "./lightSwitcher.js"; //temporary - should be somehow removed
+import { dateField } from "./lightSwitcher.js"; //temporary - should be somehow removed
 import { lightSwitcher } from "./lightSwitcher.js";
-import { btnOnOff } from "./textSwitcher.js"; //temporary - waiting for renderer function and local storage
-import { dateOnOff } from "./textSwitcher.js"; //temporary - waiting for renderer function and local storage
+import { btnOnOff } from "./textSwitcher.js"; //temporary - should be somehow removed
+import { dateOnOff } from "./textSwitcher.js"; //temporary - should be somehow removed
 import { textSwitcher } from "./textSwitcher.js";
 import { saveData } from "./storage.js";
 import { loadData } from "./storage.js";
@@ -23,29 +18,21 @@ import { dateText } from "./dateRenderer.js";
 import { timeText } from "./dateRenderer.js";
 
 
-
-
-//module for switcherRenderer
-
-
-
 const startAppFunc = () => {
     console.log ('App started');
 
-    backgr.style.backgroundColor = loadData('background-color') ? loadData('background-color') : '#FFF';
-    dateField.style.color = loadData('date-color') ? loadData('date-color') : '#000';
-    btnOnOff.innerHTML = loadData('btnText') ? loadData('btnText') : 'Turn Off';
-    dateOnOff.innerHTML = loadData('dateText') ? loadData('dateText') : 'on';
-    dateText.innerHTML = loadData('date') ? loadData('date') : '';
-    timeText.innerHTML = loadData('time') ? loadData('time') : '';
+    //TODO - make function for this
+    backgr.style.backgroundColor = 'background-color' in localStorage ? loadData('background-color') : '#FFF';
+    dateField.style.color = 'date-color' in localStorage ? loadData('date-color') : '#000';
+    btnOnOff.innerHTML = 'btnText' in localStorage ? loadData('btnText') : 'Turn Off';
+    dateOnOff.innerHTML = 'dateText' in localStorage ? loadData('dateText') : 'on';
+    dateText.innerHTML = 'date' in localStorage ? loadData('date') : '';
+    timeText.innerHTML = 'time' in localStorage ? loadData('time') : '';
 
-    const textOutputdocument= document.querySelector('.dateOutput'); //doesn't work
-    textOutputdocument.style.visibility = localStorage.length ? 'visible' : ''; //doesn't work
+    const textOutputdocument= document.querySelector('.dateOutput'); //doesn't work properly, repeats in textSwitcher.js
+    textOutputdocument.style.visibility = localStorage.length ? 'visible' : ''; //doesn't work properly, repeats in textSwitcher.js
 
     buttonListener(lightSwitcher.bind(this, trigCheck), textSwitcher.bind(this, trigCheck), securedTrigSwitch, renderDate);
 }
 
 document.addEventListener('DOMContentLoaded', startAppFunc);
-
-//alternative bckgr color: #282727
-//alternative date color: #ede5e5
