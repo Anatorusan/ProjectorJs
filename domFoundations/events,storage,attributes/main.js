@@ -4,6 +4,7 @@
 //module for lightSwitcher
 //module for textSwitcher
 //module for localStorage
+//module for dateRenderer
 
 'use strict'
 import { securedTrigSwitch } from "./trigBox.js";
@@ -25,7 +26,7 @@ import { timeText } from "./dateRenderer.js";
 
 
 //module for switcherRenderer
-//module for dateRenderer
+
 
 
 const startAppFunc = () => {
@@ -35,8 +36,11 @@ const startAppFunc = () => {
     dateField.style.color = loadData('date-color') ? loadData('date-color') : '#000';
     btnOnOff.innerHTML = loadData('btnText') ? loadData('btnText') : 'Turn Off';
     dateOnOff.innerHTML = loadData('dateText') ? loadData('dateText') : 'on';
-    dateText.innerHTML = loadData('date');
-    timeText.innerHTML = loadData('time');
+    dateText.innerHTML = loadData('date') ? loadData('date') : '';
+    timeText.innerHTML = loadData('time') ? loadData('time') : '';
+
+    const textOutputdocument= document.querySelector('.dateOutput'); //doesn't work
+    textOutputdocument.style.visibility = localStorage.length ? 'visible' : ''; //doesn't work
 
     buttonListener(lightSwitcher.bind(this, trigCheck), textSwitcher.bind(this, trigCheck), securedTrigSwitch, renderDate);
 }
