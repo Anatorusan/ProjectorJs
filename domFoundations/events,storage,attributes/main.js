@@ -1,7 +1,14 @@
+//module for trigBox object
 'use strict'
-//
+import { securedTrigSwitch } from "./trigBox.js";
+import { trig } from "./trigBox.js";
 
 
+//module for lightOn/Off
+//module for genDate
+//module for localStorage
+//module for switchListener
+//startapp function
 
 const backgr = document.querySelector('body');
 const dateField = document.querySelector('.dateOutput');
@@ -9,32 +16,25 @@ const swBtn = document.getElementById('swichButtn');
 const btnOnOff = document.querySelector('.btnOnOff');
 const dateOnOff = document.querySelector('.dateOnOff');
 
-const trigBox = {
-    trigger: 1,
-    trigSwitch() {
-        this.trigger ? this.trigger -= 1 : this.trigger += 1;
-        console.log(`Trigger value: ${this.trigger}`);
-    }
-}
+// const trigBox = {
+//     trigger: 1,
+//     trigSwitch() {
+//         this.trigger ? this.trigger -= 1 : this.trigger += 1;
+//         console.log(`Trigger value: ${this.trigger}`);
+//     }
+// }
 
-const securedTrigSwitch = trigBox.trigSwitch.bind(trigBox);
-
-const trigSwitcher = () => {
-    trigBox.trigger ? trigBox.trigOff() : trigBox.trigOn();
-    console.log(trigBox.trigger)
-}
+// const securedTrigSwitch = trigBox.trigSwitch.bind(trigBox);
 
 const lightSwitcher = () => {
-    backgr.style.backgroundColor = trigBox.trigger ? '#282727' : '';
-    dateField.style.color = trigBox.trigger ? '#ede5e5' : '';
+    backgr.style.backgroundColor = trig() ? '#282727' : '';
+    dateField.style.color = trig() ? '#ede5e5' : '';
 }
 
 const textSwitcher = () => {
-    btnOnOff.innerHTML = trigBox.trigger ? 'On' : 'Off';
-    dateOnOff.innerHTML = !trigBox.trigger ? 'on' : 'off';
+    btnOnOff.innerHTML = trig() ? 'On' : 'Off';
+    dateOnOff.innerHTML = !trig() ? 'on' : 'off';
 }
-
-
 
 swBtn.addEventListener('click', lightSwitcher);
 swBtn.addEventListener('click', textSwitcher);
@@ -101,4 +101,19 @@ swBtn.addEventListener('click', securedTrigSwitch);
 //     trigOn() {
 //         this.trigger += 1;
 //     }
+// }
+
+// const trigSwitcher = () => {
+//     trigBox.trigger ? trigBox.trigOff() : trigBox.trigOn();
+//     console.log(trigBox.trigger)
+// }
+
+// const lightSwitcher = () => {
+//     backgr.style.backgroundColor = trigBox.trigger ? '#282727' : '';
+//     dateField.style.color = trigBox.trigger ? '#ede5e5' : '';
+// }
+
+// const textSwitcher = () => {
+//     btnOnOff.innerHTML = trigBox.trigger ? 'On' : 'Off';
+//     dateOnOff.innerHTML = !trigBox.trigger ? 'on' : 'off';
 // }
