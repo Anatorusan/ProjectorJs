@@ -2,6 +2,7 @@
 //startapp function
 //module for buttonListener
 //module for lightSwitcher
+//module for textSwitcher
 
 'use strict'
 import { securedTrigSwitch } from "./trigBox.js";
@@ -13,40 +14,34 @@ import { lightSwitcher } from "./lightSwitcher.js";
 import { btnOnOff } from "./textSwitcher.js"; //temporary - waiting for renderer function and local storage
 import { dateOnOff } from "./textSwitcher.js"; //temporary - waiting for renderer function and local storage
 import { textSwitcher } from "./textSwitcher.js";
+import { saveData } from "./storage.js";
+import { loadData } from "./storage.js";
 
 
 
-//module for textSwitcher
+
 //module for switcherRenderer
 //module for dateRenderer
 //module for localStorage
 
-// const btnOnOff = document.querySelector('.btnOnOff');
-// const dateOnOff = document.querySelector('.dateOnOff');
-
-
 const startAppFunc = () => {
     console.log ('App started');
-    backgr.style.backgroundColor = '#FFF';
-    dateField.style.color = '#000';
-    btnOnOff.innerHTML = 'Turn Off';
-    dateOnOff.innerHTML = 'on';
+
+    backgr.style.backgroundColor = loadData('background-color') ? loadData('background-color') : '#FFF';
+    dateField.style.color = loadData('date-color') ? loadData('date-color') : '#000';
+    btnOnOff.innerHTML = loadData('btnText') ? loadData('btnText') : 'Turn Off';
+    dateOnOff.innerHTML = loadData('dateText') ? loadData('dateText') : 'on';
 
     buttonListener(lightSwitcher.bind(this, trigCheck), textSwitcher.bind(this, trigCheck), securedTrigSwitch);
 }
 
 document.addEventListener('DOMContentLoaded', startAppFunc);
 
-// const textSwitcher = () => {
-//     btnOnOff.innerHTML = trigCheck() ? 'Turn On' : 'Turn Off';
-//     dateOnOff.innerHTML = !trigCheck() ? 'on' : 'off';
-// }
-
 //alternative bckgr color: #282727
 //alternative date color: #ede5e5
 
 
-//exampl of startApp
+//example of startApp
 // const startApp = () => {
 //     console.log('Workshop1 startApp');
 
