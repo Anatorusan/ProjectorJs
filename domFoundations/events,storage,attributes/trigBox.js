@@ -1,4 +1,4 @@
-export const trigBox = {
+const trigBox = {
     trigger: 1,
     trigSwitch() {
         this.trigger ? this.trigger -= 1 : this.trigger += 1;

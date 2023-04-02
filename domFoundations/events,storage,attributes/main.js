@@ -1,25 +1,28 @@
 //module for trigBox object
 //startapp function
 //module for buttonListener
+//module for lightSwitcher
+
 'use strict'
 import { securedTrigSwitch } from "./trigBox.js";
 import { trigCheck } from "./trigBox.js";
 import { buttonListener } from "./buttonListener.js";
-import { backgr } from "./lightSwitcher.js";
-import { dateField } from "./lightSwitcher.js";
+import { backgr } from "./lightSwitcher.js"; //temporary - waiting for renderer function and local storage
+import { dateField } from "./lightSwitcher.js"; //temporary - waiting for renderer function and local storage
 import { lightSwitcher } from "./lightSwitcher.js";
+import { btnOnOff } from "./textSwitcher.js"; //temporary - waiting for renderer function and local storage
+import { dateOnOff } from "./textSwitcher.js"; //temporary - waiting for renderer function and local storage
+import { textSwitcher } from "./textSwitcher.js";
 
 
-//module for lightSwitcher
+
 //module for textSwitcher
 //module for switcherRenderer
 //module for dateRenderer
 //module for localStorage
 
-// const backgr = document.querySelector('body');
-// const dateField = document.querySelector('.dateOutput');
-const btnOnOff = document.querySelector('.btnOnOff');
-const dateOnOff = document.querySelector('.dateOnOff');
+// const btnOnOff = document.querySelector('.btnOnOff');
+// const dateOnOff = document.querySelector('.dateOnOff');
 
 
 const startAppFunc = () => {
@@ -29,20 +32,15 @@ const startAppFunc = () => {
     btnOnOff.innerHTML = 'Turn Off';
     dateOnOff.innerHTML = 'on';
 
-    buttonListener(lightSwitcher.bind(this, trigCheck), textSwitcher, securedTrigSwitch);
+    buttonListener(lightSwitcher.bind(this, trigCheck), textSwitcher.bind(this, trigCheck), securedTrigSwitch);
 }
 
 document.addEventListener('DOMContentLoaded', startAppFunc);
 
-// const lightSwitcher = () => {
-//     backgr.style.backgroundColor = trigCheck() ? '#282727' : '#FFF';
-//     dateField.style.color = trigCheck() ? '#ede5e5' : '#000';
+// const textSwitcher = () => {
+//     btnOnOff.innerHTML = trigCheck() ? 'Turn On' : 'Turn Off';
+//     dateOnOff.innerHTML = !trigCheck() ? 'on' : 'off';
 // }
-
-const textSwitcher = () => {
-    btnOnOff.innerHTML = trigCheck() ? 'Turn On' : 'Turn Off';
-    dateOnOff.innerHTML = !trigCheck() ? 'on' : 'off';
-}
 
 //alternative bckgr color: #282727
 //alternative date color: #ede5e5
