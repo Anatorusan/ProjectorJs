@@ -8,5 +8,5 @@ export const trigBox = {
         return this.trigger;
     }
 }
-export const trig = trigBox.trigStatusCheck.bind(trigBox)
+export const trigCheck = trigBox.trigStatusCheck.bind(trigBox)
 export const securedTrigSwitch = trigBox.trigSwitch.bind(trigBox);

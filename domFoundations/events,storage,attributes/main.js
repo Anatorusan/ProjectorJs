@@ -1,7 +1,7 @@
 //module for trigBox object
 'use strict'
 import { securedTrigSwitch } from "./trigBox.js";
-import { trig } from "./trigBox.js";
+import { trigCheck } from "./trigBox.js";
 
 
 //module for lightOn/Off
@@ -16,24 +16,25 @@ const swBtn = document.getElementById('swichButtn');
 const btnOnOff = document.querySelector('.btnOnOff');
 const dateOnOff = document.querySelector('.dateOnOff');
 
-// const trigBox = {
-//     trigger: 1,
-//     trigSwitch() {
-//         this.trigger ? this.trigger -= 1 : this.trigger += 1;
-//         console.log(`Trigger value: ${this.trigger}`);
-//     }
-// }
 
-// const securedTrigSwitch = trigBox.trigSwitch.bind(trigBox);
+const startAppFunc = () => {
+    console.log ('Light switcher started');
+    backgr.style.backgroundColor = '#FFF';
+    dateField.style.color = '#000';
+    btnOnOff.innerHTML = ' Turn Off';
+    dateOnOff.innerHTML = 'on';
+}
+
+document.addEventListener('DOMContentLoaded', startAppFunc);
 
 const lightSwitcher = () => {
-    backgr.style.backgroundColor = trig() ? '#282727' : '';
-    dateField.style.color = trig() ? '#ede5e5' : '';
+    backgr.style.backgroundColor = trigCheck() ? '#282727' : '#FFF';
+    dateField.style.color = trigCheck() ? '#ede5e5' : '#000';
 }
 
 const textSwitcher = () => {
-    btnOnOff.innerHTML = trig() ? 'On' : 'Off';
-    dateOnOff.innerHTML = !trig() ? 'on' : 'off';
+    btnOnOff.innerHTML = trigCheck() ? 'Turn On' : 'Turn Off';
+    dateOnOff.innerHTML = !trigCheck() ? 'on' : 'off';
 }
 
 swBtn.addEventListener('click', lightSwitcher);
@@ -92,28 +93,3 @@ swBtn.addEventListener('click', securedTrigSwitch);
 //     const savedList = localStorage.getItem(LS_KEY);
 //     return savedList ? JSON.parse(savedList) : [];
 // };
-
-// const trigBox = {
-//     trigger: 1,
-//     trigOff() {
-//         this.trigger -= 1;
-//     },
-//     trigOn() {
-//         this.trigger += 1;
-//     }
-// }
-
-// const trigSwitcher = () => {
-//     trigBox.trigger ? trigBox.trigOff() : trigBox.trigOn();
-//     console.log(trigBox.trigger)
-// }
-
-// const lightSwitcher = () => {
-//     backgr.style.backgroundColor = trigBox.trigger ? '#282727' : '';
-//     dateField.style.color = trigBox.trigger ? '#ede5e5' : '';
-// }
-
-// const textSwitcher = () => {
-//     btnOnOff.innerHTML = trigBox.trigger ? 'On' : 'Off';
-//     dateOnOff.innerHTML = !trigBox.trigger ? 'on' : 'off';
-// }
