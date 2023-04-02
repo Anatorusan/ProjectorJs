@@ -1,49 +1,48 @@
 //module for trigBox object
 //startapp function
-//module for switchListener
+//module for buttonListener
 'use strict'
 import { securedTrigSwitch } from "./trigBox.js";
 import { trigCheck } from "./trigBox.js";
 import { buttonListener } from "./buttonListener.js";
+import { backgr } from "./lightSwitcher.js";
+import { dateField } from "./lightSwitcher.js";
+import { lightSwitcher } from "./lightSwitcher.js";
 
 
-//module for lightOn/Off
-//module for genDate
+//module for lightSwitcher
+//module for textSwitcher
+//module for switcherRenderer
+//module for dateRenderer
 //module for localStorage
 
-const backgr = document.querySelector('body');
-const dateField = document.querySelector('.dateOutput');
-// const swBtn = document.getElementById('swichButtn');
+// const backgr = document.querySelector('body');
+// const dateField = document.querySelector('.dateOutput');
 const btnOnOff = document.querySelector('.btnOnOff');
 const dateOnOff = document.querySelector('.dateOnOff');
 
 
 const startAppFunc = () => {
-    console.log ('Light switcher started');
+    console.log ('App started');
     backgr.style.backgroundColor = '#FFF';
     dateField.style.color = '#000';
-    btnOnOff.innerHTML = ' Turn Off';
+    btnOnOff.innerHTML = 'Turn Off';
     dateOnOff.innerHTML = 'on';
 
-    buttonListener(lightSwitcher, textSwitcher, securedTrigSwitch);
+    buttonListener(lightSwitcher.bind(this, trigCheck), textSwitcher, securedTrigSwitch);
 }
 
 document.addEventListener('DOMContentLoaded', startAppFunc);
 
-const lightSwitcher = () => {
-    backgr.style.backgroundColor = trigCheck() ? '#282727' : '#FFF';
-    dateField.style.color = trigCheck() ? '#ede5e5' : '#000';
-}
+// const lightSwitcher = () => {
+//     backgr.style.backgroundColor = trigCheck() ? '#282727' : '#FFF';
+//     dateField.style.color = trigCheck() ? '#ede5e5' : '#000';
+// }
 
 const textSwitcher = () => {
     btnOnOff.innerHTML = trigCheck() ? 'Turn On' : 'Turn Off';
     dateOnOff.innerHTML = !trigCheck() ? 'on' : 'off';
 }
-
-// swBtn.addEventListener('click', lightSwitcher);
-// swBtn.addEventListener('click', textSwitcher);
-// swBtn.addEventListener('click', securedTrigSwitch);
-
 
 //alternative bckgr color: #282727
 //alternative date color: #ede5e5
