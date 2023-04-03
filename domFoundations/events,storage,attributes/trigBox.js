@@ -5,7 +5,7 @@ import { loadData } from "./storage.js";
 
 
 const trigBox = {
-    trigger: 'trigger' in localStorage ? Number(loadData('trigger')): 'on',
+    trigger: 'trigger' in localStorage ? loadData('trigger'): 'on',
     trigSwitch() {
         this.trigger = this.trigger === 'on' ? '' : 'on';
         console.log(`Trigger value: ${this.trigger}`);
