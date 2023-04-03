@@ -1,8 +1,5 @@
-//import localStorage methods here
 import { saveData } from "./storage.js";
 import { loadData } from "./storage.js";
-
-
 
 const trigBox = {
     trigger: 'trigger' in localStorage ? loadData('trigger'): 'on',
@@ -15,5 +12,6 @@ const trigBox = {
         return this.trigger;
     }
 }
+
 export const trigCheck = trigBox.trigStatusCheck.bind(trigBox)
 export const securedTrigSwitch = trigBox.trigSwitch.bind(trigBox);

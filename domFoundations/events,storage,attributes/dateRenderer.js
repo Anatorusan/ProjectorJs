@@ -1,6 +1,5 @@
-export const dateText = document.querySelector('.date');
-export const timeText = document.querySelector('.time');
-
+import { timeText } from "./initialPageRenderer.js";
+import { dateText } from "./initialPageRenderer.js";
 import { saveData } from "./storage.js";
 import { loadData } from "./storage.js";
 
@@ -19,8 +18,6 @@ export const renderDate = () => {
         padL(dt.getSeconds())}`
     saveData('time', time);
 
-    console.log(date);
-    console.log(time);
     dateText.innerHTML = loadData('date');
     timeText.innerHTML = loadData('time');
 }
