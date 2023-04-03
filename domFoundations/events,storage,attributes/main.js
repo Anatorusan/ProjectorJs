@@ -26,11 +26,11 @@ const startAppFunc = () => {
     dateField.style.color = 'date-color' in localStorage ? loadData('date-color') : '#000';
     btnOnOff.innerHTML = 'btnText' in localStorage ? loadData('btnText') : 'Turn Off';
     dateOnOff.innerHTML = 'dateText' in localStorage ? loadData('dateText') : 'on';
-    dateText.innerHTML = 'date' in localStorage ? loadData('date') : '';
-    timeText.innerHTML = 'time' in localStorage ? loadData('time') : '';
+    dateText.innerHTML = 'date' in localStorage ? loadData('date') : '00-00-0000';
+    timeText.innerHTML = 'time' in localStorage ? loadData('time') : '00:00:00';
 
-    const textOutputdocument= document.querySelector('.dateOutput'); //doesn't work properly, repeats in textSwitcher.js
-    textOutputdocument.style.visibility = localStorage.length ? 'visible' : ''; //doesn't work properly, repeats in textSwitcher.js
+    const textOutputdocument= document.querySelector('.dateOutput'); //repeats in textSwitcher.js
+    textOutputdocument.style.visibility = localStorage.length ? 'visible' : 'hidden'; //repeats in textSwitcher.js
 
     buttonListener(lightSwitcher.bind(this, trigCheck), textSwitcher.bind(this, trigCheck), securedTrigSwitch, renderDate);
 }

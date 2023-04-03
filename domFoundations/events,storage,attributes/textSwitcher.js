@@ -9,6 +9,6 @@ export const textSwitcher = (check) => {
     saveData('btnText', btnOnOff.innerHTML);
     dateOnOff.innerHTML = !check() ? 'on' : 'off';
     saveData('dateText', dateOnOff.innerHTML);
-    const textOutputdocument= document.querySelector('.dateOutput'); //doesn't work
-    textOutputdocument.style.visibility = localStorage.length ? 'visible' : ''; //doesn't work
+    const textOutputdocument= document.querySelector('.dateOutput'); 
+    textOutputdocument.style.visibility = localStorage.length ? 'visible' : 'hidden'; 
 }
