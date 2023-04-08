@@ -2,7 +2,7 @@
 
 import { securedTrigSwitch } from "./trigBox.js";
 import { trigCheck } from "./trigBox.js";
-import { buttonListener } from "./buttonListener.js";
+import { handlers } from "./handlers.js";
 import { lightSwitcher } from "./lightSwitcher.js";
 import { textSwitcher } from "./textSwitcher.js";
 import { renderDate } from "./dateRenderer.js";
@@ -13,7 +13,7 @@ const startAppFunc = () => {
 
     startStateRenderer();
       
-    buttonListener(lightSwitcher.bind(this, trigCheck), textSwitcher.bind(this, trigCheck), securedTrigSwitch, renderDate);
+    handlers(lightSwitcher.bind(this, trigCheck), textSwitcher.bind(this, trigCheck), securedTrigSwitch, renderDate);
 }
 
 document.addEventListener('DOMContentLoaded', startAppFunc);
