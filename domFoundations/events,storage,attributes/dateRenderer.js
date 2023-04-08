@@ -4,18 +4,20 @@ import { saveData } from "./storage.js";
 import { loadData } from "./storage.js";
 
 export const renderDate = () => {
-    const dt = new Date();
-    const padL = (nr, len = 2, chr = `0`) => `${nr}`.padStart(2, chr);
+    const currentDate = new Date();
+    const addZero = (stringToPad, targetLength = 2, padWithString = `0`) =>
+     `${stringToPad}`.padStart(targetLength, padWithString);
     
-    const date = `${padL(dt.getDate())}-${
-        padL(dt.getMonth()+1)}-${
-        dt.getFullYear()}`
+    const date = `${
+        addZero(currentDate.getDate())}-${
+        addZero(currentDate.getMonth()+1)}-${
+            currentDate.getFullYear()}`
     saveData('date', date);
 
     const time = `${
-        padL(dt.getHours())}:${
-        padL(dt.getMinutes())}:${
-        padL(dt.getSeconds())}`
+        addZero(currentDate.getHours())}:${
+        addZero(currentDate.getMinutes())}:${
+        addZero(currentDate.getSeconds())}`
     saveData('time', time);
 
     dateText.innerHTML = loadData('date');
