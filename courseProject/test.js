@@ -9,7 +9,7 @@
 //add select with days and hours - done
 //make addition of 1 month - done
 //fix the nan issue when push + button and calculate button without initial date (make inactive) - done
-//make withdrawal of 1 month
+//make withdrawal of 1 month - done
 //add week 
 
 const initialDateElement = document.getElementById('startDate');
@@ -17,8 +17,10 @@ const endDateElement = document.getElementById('endDate');
 const calcButtnElement = document.getElementById('calcButtn');
 const displayElement = document.getElementById('dateDisplay');
 const unitSelectorElement = document.getElementById('selectUnit');
-const plusButtnElement = document.getElementById('plusButtn');
-const minusButtnElement = document.getElementById('minusButtn');
+const minusMonthButtnElement = document.getElementById('minusMonthButtn');
+const plusMonthButtnElement = document.getElementById('plusMonthButtn');
+const minusWeekButtnElement = document.getElementById('minusWeekButtn');
+const plusWeekButtnElement = document.getElementById('plusWeekButtn');
 
 const dateDisplay = () => {
   endDateElement.value = initialDateElement.value;
@@ -42,8 +44,10 @@ const calculate = () => {
 }
 
 const plusMinusBtnAtivator = () => {
-  plusButtnElement.disabled = false;
-  minusButtnElement.disabled = false;
+  plusMonthButtnElement.disabled = false;
+  minusMonthButtnElement.disabled = false;
+  plusWeekButtnElement.disabled = false;
+  minusWeekButtnElement.disabled = false;
 }
 
 const presetSwitcher = {
@@ -62,6 +66,7 @@ const presetSwitcher = {
     endDateElement.value = `${baseDateObj.getFullYear()}-${(this.addZero(baseDateObj.getMonth()+1))}-${this.addZero(baseDateObj.getDate())}`;
     console.log(this.monthAddCounter);
     this.monthAddCounter += 1;
+
     initialDateElement.setAttribute('max', endDateElement.value);
     console.log('initial date limited');
     console.log(`end date: ${endDateElement.value} start date: ${initialDateElement.value}`);
@@ -74,6 +79,7 @@ const presetSwitcher = {
     if (endDateObj.getMonth() > startDateObj.getMonth()) {
       endDateObj.setMonth(endDateObj.getMonth() - 1);
       endDateElement.value = `${endDateObj.getFullYear()}-${(this.addZero(endDateObj.getMonth()+1))}-${this.addZero(endDateObj.getDate())}`;
+
       initialDateElement.setAttribute('max', endDateElement.value);
       return
     }
@@ -84,26 +90,11 @@ const presetSwitcher = {
     console.log('reset counter called');
     this.monthAddCounter = 1;
     this.weekAddCounter = 1;
-    this.monthAddCounter = 1;
-    this.monthSubstrCounter = 1;
-  },
+  }
 
-  resetAddCounters() {
-    this.monthAddCounter = 1;
-    this.weekAddCounter = 1;
-  },
-
-  // resetSubstrCounters() {
-  //   this.monthSubstrCounter = 1;
-  //   this.weekSubstrCounter = 1;
-  // }
 }
 
 const resetAllCounters = presetSwitcher.resetAllCounters.bind(presetSwitcher);
-
-const resetAddCounters = presetSwitcher.resetAddCounters.bind(presetSwitcher);
-
-// const resetSubstrCounters = presetSwitcher.resetSubstrCounters.bind(presetSwitcher);
 
 const addMonth = presetSwitcher.addMonth.bind(presetSwitcher);
 
@@ -120,10 +111,8 @@ endDateElement.addEventListener('change', initialDateLimiter);
 
 calcButtnElement.addEventListener('click', calculate);
 
-plusButtnElement.addEventListener('click', addMonth);
+plusMonthButtnElement.addEventListener('click', addMonth);
 
-// plusButtnElement.addEventListener('click', resetSubstrCounters);
+minusMonthButtnElement.addEventListener('click', substrMonth);
 
-minusButtnElement.addEventListener('click', substrMonth);
-
-minusButtnElement.addEventListener('click', resetAddCounters);
+minusMonthButtnElement.addEventListener('click', resetAllCounters);
