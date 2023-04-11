@@ -28,11 +28,15 @@ const endDateActivator = () => {
 }
 const initialDateLimiter = () => {
   initialDateElement.setAttribute('max', endDateElement.value);
+//   console.log('initial date limited')
 }
 
 const calculate = () => {
   const initDateObj = new Date(initialDateElement.value);
   const endDateObj = new Date(endDateElement.value);
+//   if (initDateObj > endDateObj) {
+//     return;
+//   }
   displayElement.innerHTML = (endDateObj - initDateObj) / Number(unitSelectorElement.value);
 }
 
@@ -50,18 +54,28 @@ const presetSwitcher = {
     endDateElement.value = `${baseDateObj.getFullYear()}-${(this.addZero(baseDateObj.getMonth()+1))}-${this.addZero(baseDateObj.getDate())}`
     console.log(this.monthCounter);
     this.monthCounter += 1;
+    initialDateElement.setAttribute('max', endDateElement.value);
+    console.log('initial date limited')
     },
 
   resetCounter() {
-
+    console.log('reset counter called');
+    this.monthCounter = 1;
+    this.weekCounter = 1;
     }
 }
 
+const resetCounter = presetSwitcher.resetCounter.bind(presetSwitcher);
+
 const addMonth = presetSwitcher.addMonth.bind(presetSwitcher);
+
+initialDateElement.addEventListener('input', resetCounter);
 
 initialDateElement.addEventListener('input', endDateActivator);
 
 endDateElement.addEventListener('input', initialDateLimiter);
+
+endDateElement.addEventListener('change', initialDateLimiter);
 
 calcButtnElement.addEventListener('click', calculate);
 
