@@ -32,3 +32,14 @@ const me = {
     }
     
     me.changeHobby('playing guitar');
+
+    const presetSwitcher = {
+        weekCounter: 1,
+        monthCounter: "eat",
+      
+        addMonth() {
+          console.log(this.monthCounter);
+        },
+      }
+
+      presetSwitcher.addMonth();
