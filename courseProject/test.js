@@ -8,8 +8,9 @@
 //display basic differense between the dates - done
 //add select with days and hours - done
 //make addition of 1 month - done
+//fix the nan issue when push + button and calculate button without initial date (make inactive) - done
 //make withdrawal of 1 month
-//add week and month presents 
+//add week 
 
 const initialDateElement = document.getElementById('startDate');
 const endDateElement = document.getElementById('endDate');
@@ -17,6 +18,7 @@ const calcButtnElement = document.getElementById('calcButtn');
 const displayElement = document.getElementById('dateDisplay');
 const unitSelectorElement = document.getElementById('selectUnit');
 const plusButtnElement = document.getElementById('plusButtn');
+const minusButtnElement = document.getElementById('minusButtn');
 
 const dateDisplay = () => {
   endDateElement.value = initialDateElement.value;
@@ -28,16 +30,20 @@ const endDateActivator = () => {
 }
 const initialDateLimiter = () => {
   initialDateElement.setAttribute('max', endDateElement.value);
-//   console.log('initial date limited')
 }
 
 const calculate = () => {
+  if (endDateElement.value === '') {
+    return;
+  }
   const initDateObj = new Date(initialDateElement.value);
   const endDateObj = new Date(endDateElement.value);
-//   if (initDateObj > endDateObj) {
-//     return;
-//   }
   displayElement.innerHTML = (endDateObj - initDateObj) / Number(unitSelectorElement.value);
+}
+
+const plusMinusBtnAtivator = () => {
+  plusButtnElement.disabled = false;
+  minusButtnElement.disabled = false;
 }
 
 const presetSwitcher = {
@@ -73,7 +79,7 @@ initialDateElement.addEventListener('input', resetCounter);
 
 initialDateElement.addEventListener('input', endDateActivator);
 
-endDateElement.addEventListener('input', initialDateLimiter);
+initialDateElement.addEventListener('input', plusMinusBtnAtivator);
 
 endDateElement.addEventListener('change', initialDateLimiter);
 
