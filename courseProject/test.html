@@ -11,10 +11,15 @@
     <input type="date" id="endDate" name="endDate" disabled min="2023-05-03">
     <button id='calcButtn'>Calculate</button>
     <select id='selectUnit'>
-    <option value='86400000'>Days</option>
-    <option value='3600000'>Hours</option>
-    <option value='60000'>Minutes</option>
-    <option value='1000'>Seconds</option>
+        <option value='86400000'>Days</option>
+        <option value='3600000'>Hours</option>
+        <option value='60000'>Minutes</option>
+        <option value='1000'>Seconds</option>
+    </select>
+    <select id="selectDayType">
+        <option value="all">All days</option>
+        <option value="business">Business days</option>
+        <option value="weekend">Weekends</option>
     </select>
     <div id="dateDisplay"><br></div>
     <div>Month</div>
