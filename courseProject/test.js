@@ -10,7 +10,7 @@
 //make addition of 1 month - done
 //fix the nan issue when push + button and calculate button without initial date (make inactive) - done
 //make withdrawal of 1 month - done
-//add week 
+//add week addition
 
 const initialDateElement = document.getElementById('startDate');
 const endDateElement = document.getElementById('endDate');
@@ -52,7 +52,6 @@ const plusMinusBtnAtivator = () => {
 
 const presetSwitcher = {
   weekAddCounter: 1,
-  weekSubstrCounter: 1,
   monthAddCounter: 1,
   
   addZero(stringToPad, targetLength = 2, padWithString = `0`) {
@@ -61,19 +60,24 @@ const presetSwitcher = {
 
   addMonth() {
     console.log(`end date: ${endDateElement.value} start date: ${initialDateElement.value}`);
+    
     const baseDateObj = new Date(initialDateElement.value);
     baseDateObj.setMonth(baseDateObj.getMonth() + this.monthAddCounter);
     endDateElement.value = `${baseDateObj.getFullYear()}-${(this.addZero(baseDateObj.getMonth()+1))}-${this.addZero(baseDateObj.getDate())}`;
+    
     console.log(this.monthAddCounter);
+
     this.monthAddCounter += 1;
 
     initialDateElement.setAttribute('max', endDateElement.value);
+
     console.log('initial date limited');
     console.log(`end date: ${endDateElement.value} start date: ${initialDateElement.value}`);
   },
 
   substrMonth() {
     console.log(`end date: ${endDateElement.value} start date: ${initialDateElement.value}`);
+    
     const startDateObj = new Date(initialDateElement.value);
     const endDateObj = new Date(endDateElement.value);
     if (endDateObj.getMonth() > startDateObj.getMonth()) {
@@ -84,6 +88,23 @@ const presetSwitcher = {
       return
     }
     return
+  },
+
+  addWeek() {
+    console.log(`end date: ${endDateElement.value} start date: ${initialDateElement.value}`);
+    
+    const baseDateObj = new Date(initialDateElement.value);
+    baseDateObj.setDate(baseDateObj.getDate() + this.weekAddCounter * 7);
+    endDateElement.value = `${baseDateObj.getFullYear()}-${(this.addZero(baseDateObj.getMonth()+1))}-${this.addZero(baseDateObj.getDate())}`;
+    
+    console.log(this.weekAddCounter);
+
+    this.weekAddCounter += 1;
+
+    initialDateElement.setAttribute('max', endDateElement.value);
+
+    console.log('initial date limited');
+    console.log(`end date: ${endDateElement.value} start date: ${initialDateElement.value}`);
   },
 
   resetAllCounters() {
@@ -100,6 +121,8 @@ const addMonth = presetSwitcher.addMonth.bind(presetSwitcher);
 
 const substrMonth = presetSwitcher.substrMonth.bind(presetSwitcher);
 
+const addWeek = presetSwitcher.addWeek.bind(presetSwitcher);
+
 
 initialDateElement.addEventListener('input', resetAllCounters);
 
@@ -112,6 +135,8 @@ endDateElement.addEventListener('change', initialDateLimiter);
 calcButtnElement.addEventListener('click', calculate);
 
 plusMonthButtnElement.addEventListener('click', addMonth);
+
+plusWeekButtnElement.addEventListener('click', addWeek);
 
 minusMonthButtnElement.addEventListener('click', substrMonth);
 
