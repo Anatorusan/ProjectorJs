@@ -1,16 +1,7 @@
 'use strict'
 
-//male two date inputs - done
-//check how you can catch data from them - done
-//activate the disabled date input field - done
-//add restriction of possible date of the second date field - done
-//add restriction of possible date of the first date field - done
-//display basic differense between the dates - done
-//add select with days and hours - done
-//make addition of 1 month - done
-//fix the nan issue when push + button and calculate button without initial date (make inactive) - done
-//make withdrawal of 1 month - done
-//add week addition
+//add separate resets for month and week counters, bind them to plus buttons (month buttn resets the week counter and vice versa)
+//add condition - if the end date is empty, the value is added to the initial date, else it is added to the existing end date
 
 const initialDateElement = document.getElementById('startDate');
 const endDateElement = document.getElementById('endDate');
@@ -107,6 +98,21 @@ const presetSwitcher = {
     console.log(`end date: ${endDateElement.value} start date: ${initialDateElement.value}`);
   },
 
+  substrWeek() {
+    console.log(`end date: ${endDateElement.value} start date: ${initialDateElement.value}`);
+    
+    const startDateObj = new Date(initialDateElement.value);
+    const endDateObj = new Date(endDateElement.value);
+    if (endDateObj.getDate() > startDateObj.getDate()) {
+      endDateObj.setDate(endDateObj.getDate() - 1);
+      endDateElement.value = `${endDateObj.getFullYear()}-${(this.addZero(endDateObj.getMonth()+1))}-${this.addZero(endDateObj.getDate())}`;
+
+      initialDateElement.setAttribute('max', endDateElement.value);
+      return
+    }
+    return
+  },
+
   resetAllCounters() {
     console.log('reset counter called');
     this.monthAddCounter = 1;
@@ -122,6 +128,8 @@ const addMonth = presetSwitcher.addMonth.bind(presetSwitcher);
 const substrMonth = presetSwitcher.substrMonth.bind(presetSwitcher);
 
 const addWeek = presetSwitcher.addWeek.bind(presetSwitcher);
+
+const substrWeek = presetSwitcher.substrWeek.bind(presetSwitcher);
 
 
 initialDateElement.addEventListener('input', resetAllCounters);
@@ -141,3 +149,7 @@ plusWeekButtnElement.addEventListener('click', addWeek);
 minusMonthButtnElement.addEventListener('click', substrMonth);
 
 minusMonthButtnElement.addEventListener('click', resetAllCounters);
+
+minusWeekButtnElement.addEventListener('click', substrWeek);
+
+minusWeekButtnElement.addEventListener('click', resetAllCounters);
