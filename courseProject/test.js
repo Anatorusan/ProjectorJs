@@ -160,8 +160,6 @@ const presetSwitcher = {
 
 //history
 
-//make history array filled with objectsb - start date, end date, number, units, include days - done
-//generate a table with history data
 //limit the number of the lines to 10 and add update mechanism - if lenght is < 10 add element to end, if >= add element to beginning and remove from the end
 
 const history = [];
@@ -185,6 +183,11 @@ const historyRenderer = () => {
     <td class="tableCell">${history[history.length - 1]['units']}</td>
     <td class="tableCell">${history[history.length - 1]['includeDays']}</td>`;
   tableHeaderElement.after(historyRecordElement);
+  if (history.length > 10) {
+    const lastRow = document.querySelector('tr:last-child');
+    lastRow.remove();
+  }
+  
   
     
 }
@@ -234,16 +237,25 @@ minusWeekButtnElement.addEventListener('click', substrWeek);
 
 minusWeekButtnElement.addEventListener('click', resetAllCounters);
 
+// const historyGenerator = () => {
+//   history.push({'startDate' : initialDateElement.value,
+//   'endDate' : endDateElement.value,
+//   'number' : displayElement.innerHTML,
+//   'units' : unitsMap[unitSelectorElement.value],
+//   'includeDays' : selectDayTypeElement.value})
+//   console.log(history);
+// }
+
 // const historyRenderer = () => {
-//   history.forEach((element) => {
-//     const historyRecordElement = document.createElement('tr');
+  
+//   const historyRecordElement = document.createElement('tr');
 //   historyRecordElement.innerHTML = `
-//     <td class="tableCell">${element['startDate']}</td>
-//     <td class="tableCell">${element['endDate']}</td>
-//     <td class="tableCell">${element['number']}</td>
-//     <td class="tableCell">${element['units']}</td>
-//     <td class="tableCell">${element['includeDays']}</td>`;
+//     <td class="tableCell">${history[history.length - 1]['startDate']}</td>
+//     <td class="tableCell">${history[history.length - 1]['endDate']}</td>
+//     <td class="tableCell">${history[history.length - 1]['number']}</td>
+//     <td class="tableCell">${history[history.length - 1]['units']}</td>
+//     <td class="tableCell">${history[history.length - 1]['includeDays']}</td>`;
 //   tableHeaderElement.after(historyRecordElement);
-//   });
+  
     
 // }
