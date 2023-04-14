@@ -10,6 +10,14 @@ const plusMonthButtnElement = document.getElementById('plusMonthButtn');
 const minusWeekButtnElement = document.getElementById('minusWeekButtn');
 const plusWeekButtnElement = document.getElementById('plusWeekButtn');
 const selectDayTypeElement = document.getElementById('selectDayType');
+const tableHeaderElement = document.querySelector('.tableHeader');
+
+const unitsMap = {
+  '86400000' : 'Days',
+  '3600000' : 'Hours',
+  '60000' : 'Minutes',
+  '1000' : 'Seconds'
+}
 
 const dateDisplay = () => {
   endDateElement.value = initialDateElement.value;
@@ -25,6 +33,7 @@ const initialDateLimiter = () => {
 
 const termDurationGenerator = () => {
   let start = new Date(initialDateElement.value);
+  start.setDate(start.getDate() + 1); 
   const finish = new Date(endDateElement.value);
   const dayMilliseconds = 1000 * 60 * 60 * 24;
 
@@ -149,6 +158,37 @@ const presetSwitcher = {
 
 }
 
+//history
+
+//make history array filled with objectsb - start date, end date, number, units, include days - done
+//generate a table with history data
+//limit the number of the lines to 10 and add update mechanism - if lenght is < 10 add element to end, if >= add element to beginning and remove from the end
+
+const history = [];
+
+const historyGenerator = () => {
+  history.push({'startDate' : initialDateElement.value,
+  'endDate' : endDateElement.value,
+  'number' : displayElement.innerHTML,
+  'units' : unitsMap[unitSelectorElement.value],
+  'includeDays' : selectDayTypeElement.value})
+  console.log(history);
+}
+
+const historyRenderer = () => {
+  
+  const historyRecordElement = document.createElement('tr');
+  historyRecordElement.innerHTML = `
+    <td class="tableCell">${history[history.length - 1]['startDate']}</td>
+    <td class="tableCell">${history[history.length - 1]['endDate']}</td>
+    <td class="tableCell">${history[history.length - 1]['number']}</td>
+    <td class="tableCell">${history[history.length - 1]['units']}</td>
+    <td class="tableCell">${history[history.length - 1]['includeDays']}</td>`;
+  tableHeaderElement.after(historyRecordElement);
+  
+    
+}
+
 const resetAllCounters = presetSwitcher.resetAllCounters.bind(presetSwitcher);
 
 const addMonth = presetSwitcher.addMonth.bind(presetSwitcher);
@@ -174,6 +214,10 @@ endDateElement.addEventListener('change', initialDateLimiter);
 
 calcButtnElement.addEventListener('click', calculate);
 
+calcButtnElement.addEventListener('click', historyGenerator);
+
+calcButtnElement.addEventListener('click', historyRenderer);
+
 plusMonthButtnElement.addEventListener('click', addMonth);
 
 plusMonthButtnElement.addEventListener('click', resetWeekAddCounter);
@@ -189,3 +233,17 @@ minusMonthButtnElement.addEventListener('click', resetAllCounters);
 minusWeekButtnElement.addEventListener('click', substrWeek);
 
 minusWeekButtnElement.addEventListener('click', resetAllCounters);
+
+// const historyRenderer = () => {
+//   history.forEach((element) => {
+//     const historyRecordElement = document.createElement('tr');
+//   historyRecordElement.innerHTML = `
+//     <td class="tableCell">${element['startDate']}</td>
+//     <td class="tableCell">${element['endDate']}</td>
+//     <td class="tableCell">${element['number']}</td>
+//     <td class="tableCell">${element['units']}</td>
+//     <td class="tableCell">${element['includeDays']}</td>`;
+//   tableHeaderElement.after(historyRecordElement);
+//   });
+    
+// }

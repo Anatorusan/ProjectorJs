@@ -17,9 +17,9 @@
         <option value='1000'>Seconds</option>
     </select>
     <select id="selectDayType">
-        <option value="all">All days</option>
-        <option value="business">Business days</option>
-        <option value="weekend">Weekends</option>
+        <option value="All">All days</option>
+        <option value="Business">Business days</option>
+        <option value="Weekend">Weekends</option>
     </select>
     <div id="dateDisplay"><br></div>
     <div>Month</div>
@@ -28,6 +28,15 @@
     <div>Week</div>
     <button id='minusWeekButtn' disabled>-</button>
     <button id='plusWeekButtn' disabled>+</button>
+    <table id='historyTable'>
+        <tr class = 'tableHeader'>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Number</th>
+            <th>Units</th>
+            <th>Included Days</th>
+        </tr>
+    </table>
 
 </body>
 <script src="test.js"></script>
