@@ -12,6 +12,15 @@ const plusWeekButtnElement = document.getElementById('plusWeekButtn');
 const selectDayTypeElement = document.getElementById('selectDayType');
 const tableHeaderElement = document.querySelector('.tableHeader');
 
+const saveData = (key, value) => {
+  localStorage.setItem(key, JSON.stringify(value));
+}
+
+const loadData = (key) => {
+  const loadedData = JSON.parse(localStorage.getItem(key));
+  return loadedData ? loadedData : [];
+}
+
 const unitsMap = {
   '86400000' : 'Days',
   '3600000' : 'Hours',
@@ -162,41 +171,84 @@ const presetSwitcher = {
 
 //limit the number of the lines to 10 and add update mechanism - if lenght is < 10 add element to end, if >= add element to beginning and remove from the end
 
-const history = [];
+const history = loadData('historyRecord');
 
 const historyGenerator = () => {
   if (!displayElement.innerHTML) {
     return
   }
-  console.log(displayElement.innerHTML);
-  history.push({'startDate' : initialDateElement.value,
+
+  history.unshift({'startDate' : initialDateElement.value,
   'endDate' : endDateElement.value,
   'number' : displayElement.innerHTML,
   'units' : unitsMap[unitSelectorElement.value],
   'includeDays' : selectDayTypeElement.value})
+  if(history.length > 10) {
+    history.pop();
+  }
   console.log(history);
+
+  saveData('historyRecord', history);
 }
 
 const historyRenderer = () => {
   if (!displayElement.innerHTML) {
     return
   }
-  const historyRecordElement = document.createElement('tr');
-  historyRecordElement.innerHTML = `
-    <td class="tableCell">${history[history.length - 1]['startDate']}</td>
-    <td class="tableCell">${history[history.length - 1]['endDate']}</td>
-    <td class="tableCell">${history[history.length - 1]['number']}</td>
-    <td class="tableCell">${history[history.length - 1]['units']}</td>
-    <td class="tableCell">${history[history.length - 1]['includeDays']}</td>`;
-  tableHeaderElement.after(historyRecordElement);
-  if (history.length > 10) {
-    const lastRow = document.querySelector('tr:last-child');
-    lastRow.remove();
-  }
-  
-  
+  const loadedHistory = loadData('historyRecord');
+
+  console.log(loadedHistory);
+
+  if (loadedHistory){
     
+      const historyRecordElement = document.createElement('tr');
+      historyRecordElement.innerHTML = `
+      <td class="tableCell">${loadedHistory[0]['startDate']}</td>
+      <td class="tableCell">${loadedHistory[0]['endDate']}</td>
+      <td class="tableCell">${loadedHistory[0]['number']}</td>
+      <td class="tableCell">${loadedHistory[0]['units']}</td>
+      <td class="tableCell">${loadedHistory[0]['includeDays']}</td>`;
+      tableHeaderElement.after(historyRecordElement);
+      //will be problem with the limitation here
+      // if (loadedHistory.length > 10) {
+      //   const lastRow = document.querySelector('tr:last-child');
+      //   lastRow.remove();
+      // }
+  } else {
+    return;
+  }
 }
+
+const startHistoryRenderer = () => {
+  const loadedStartHistory = loadData('historyRecord').reverse();
+  console.log(loadedStartHistory);
+  if (loadedStartHistory){
+    loadedStartHistory.forEach((record) => {
+      const historyRecordElement = document.createElement('tr');
+      historyRecordElement.innerHTML = `
+      <td class="tableCell">${record['startDate']}</td>
+      <td class="tableCell">${record['endDate']}</td>
+      <td class="tableCell">${record['number']}</td>
+      <td class="tableCell">${record['units']}</td>
+      <td class="tableCell">${record['includeDays']}</td>`;
+      tableHeaderElement.after(historyRecordElement);
+      // if (loadedStartHistory.length > 10) {
+      //   const lastRow = document.querySelector('tr:last-child');
+      //   lastRow.remove();
+      // }
+    })
+  } else {
+    return;
+  }
+}
+
+const startAppFunc = () => {
+  console.log ('App started');
+
+  startHistoryRenderer();
+}
+
+document.addEventListener('DOMContentLoaded', startAppFunc);
 
 const resetAllCounters = presetSwitcher.resetAllCounters.bind(presetSwitcher);
 
@@ -243,6 +295,8 @@ minusWeekButtnElement.addEventListener('click', substrWeek);
 
 minusWeekButtnElement.addEventListener('click', resetAllCounters);
 
+document.addEventListener('DOMContentLoaded', startAppFunc);
+
 // const historyGenerator = () => {
 //   history.push({'startDate' : initialDateElement.value,
 //   'endDate' : endDateElement.value,
@@ -265,3 +319,28 @@ minusWeekButtnElement.addEventListener('click', resetAllCounters);
   
     
 // }
+
+
+// const historyRecordElement = document.createElement('tr');
+//       historyRecordElement.innerHTML = `
+//       <td class="tableCell">${loadedHistory[loadedHistory.length - 1]['startDate']}</td>
+//       <td class="tableCell">${loadedHistory[loadedHistory.length - 1]['endDate']}</td>
+//       <td class="tableCell">${loadedHistory[loadedHistory.length - 1]['number']}</td>
+//       <td class="tableCell">${loadedHistory[loadedHistory.length - 1]['units']}</td>
+//       <td class="tableCell">${loadedHistory[loadedHistory.length - 1]['includeDays']}</td>`;
+//       tableHeaderElement.after(historyRecordElement);
+
+
+// const startHistoryRenderer = () => {
+//   const loadedStartHistory = loadData('historyRecord');
+//   console.log(loadedStartHistory);
+//   if (loadedStartHistory){
+//     loadedStartHistory.forEach((record) => {
+//       const historyRecordElement = document.createElement('tr');
+//       historyRecordElement.innerHTML = `
+//       <td class="tableCell">${record['startDate']}</td>
+//       <td class="tableCell">${record['endDate']}</td>
+//       <td class="tableCell">${record['number']}</td>
+//       <td class="tableCell">${record['units']}</td>
+//       <td class="tableCell">${record['includeDays']}</td>`;
+//       tableHeaderElement.after(historyRecordElement);
