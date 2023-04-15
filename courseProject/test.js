@@ -165,6 +165,10 @@ const presetSwitcher = {
 const history = [];
 
 const historyGenerator = () => {
+  if (!displayElement.innerHTML) {
+    return
+  }
+  console.log(displayElement.innerHTML);
   history.push({'startDate' : initialDateElement.value,
   'endDate' : endDateElement.value,
   'number' : displayElement.innerHTML,
@@ -174,7 +178,9 @@ const historyGenerator = () => {
 }
 
 const historyRenderer = () => {
-  
+  if (!displayElement.innerHTML) {
+    return
+  }
   const historyRecordElement = document.createElement('tr');
   historyRecordElement.innerHTML = `
     <td class="tableCell">${history[history.length - 1]['startDate']}</td>
