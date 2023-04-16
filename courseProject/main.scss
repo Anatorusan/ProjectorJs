@@ -1,0 +1,44 @@
+// general styles
+*,
+::before,
+::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: url('/images/gears-on-wooden-table2_origina.jpg') no-repeat center;
+    background-size: cover;
+}
+
+.wrapper {
+    max-width: 1080px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+// layouts
+.appHeader {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+// local styles
+.blankTop {
+    height: 30px;
+    background-color: #FFF;
+}
+
+.appMainBody {
+    margin-top: 200px;
+}
+
+.appHeader {
+    background-color: #0A0A0A;
+}
+
+.appHeader__heading {
+    color: #FFF;
+}
