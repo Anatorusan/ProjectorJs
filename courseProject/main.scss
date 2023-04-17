@@ -1,3 +1,5 @@
+@import "fonts";
+
 // general styles
 *,
 ::before,
@@ -8,7 +10,17 @@
 }
 
 body {
-    background: url('/images/gears-on-wooden-table2_origina.jpg') no-repeat center;
+    font-family: "namu", Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: 800;
+}
+
+img {
+    display: block;
+    height: auto;
+}
+
+html {
+    background: url('/images/gears-on-wooden-table2_origina.jpg') no-repeat center center fixed;
     background-size: cover;
 }
 
@@ -18,21 +30,83 @@ body {
     margin-right: auto;
 }
 
-// layouts
+.mild-black {
+    color:rgba(0, 0, 0, 0.6);
+}
+
+.block {
+    display: block;
+}
+
+// global layouts
 .appHeader {
     display: flex;
     justify-content: space-between;
 }
 
+.appMainSection {
+    display: grid;
+    grid-template-columns: 66.7% 33.3%;
+    grid-template-rows: 40% 60%;
+}
+
+.intro-container {
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+}
+
+.history-container {
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+}
+
+.form-container {
+    grid-column: 2 / 3;
+    grid-row: 1 / 3;
+}
+
+//local layouts
+.appMainBody {
+    margin-top: 200px;
+}
+
+.headerTextContainer {
+    padding-left: 72px;
+    padding-top: 10px;
+}
+
+.intro-container {
+    padding-top: 50px;
+    padding-left: 40px;
+    max-width: 670px;
+}
+
+.appMainSection__heading {
+    padding-bottom: 20px;
+}
+
+.history-container {
+    padding-left: 40px;
+    padding-top: 40px;
+}
+
+.formItem-container {
+    display: flex;
+    max-width: 290px;
+    justify-content: space-between;
+    padding: 13px 20px;
+    border-radius: 6px;
+    margin-bottom: 25px;
+}
+
+.patternsLabel-container {
+    width: 100%;
+}
 
 // local styles
 .blankTop {
     height: 30px;
     background-color: #FFF;
-}
-
-.appMainBody {
-    margin-top: 200px;
 }
 
 .appHeader {
@@ -41,4 +115,89 @@ body {
 
 .appHeader__heading {
     color: #FFF;
+    font-family: "Trajanus Roman", 'Times New Roman', Times, serif;
+    font-size: 100px;
+    font-weight: 300;
+    line-height: 120%;
 }
+
+.appMainSection {
+    background-color: #ECECEF;
+}
+
+.appMainSection__heading {
+    font-family: "mont", Arial, Helvetica, sans-serif;
+    font-weight: 600;
+    color: #438303;
+}
+
+.appMainSection__instruction {
+    line-height: 150%;
+}
+
+.form-container {
+    padding-top: 50px;
+}
+
+.formItem-container {
+    background-color: #FFF;
+}
+
+.inputItem {
+    font-family: "namu", Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: 800;
+    border: none;
+}
+
+// .inputItem::-webkit-calendar-picker-indicator {
+//     fill:#438303;    
+// }
+
+.endDateInput:disabled {
+    background-color: #FFF;
+    color: #FFF;
+}
+
+.unitTypeContainer {
+    color:#438303;
+}
+
+//history action
+.historyChckb {
+    display: none;
+}
+
+.historyChckbLabel {
+    padding: 15px 27px;
+    background-color: #438303;
+    border-radius: 6px;
+    color: #FFF;
+    line-height: 100%;
+    display: block;
+    max-width: 110px;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+.historyTable-container {
+    visibility: hidden;
+}
+
+.historyChckb:checked ~.historyTable-container {
+    visibility: visible;
+}
+
+//patterns action
+.patternsChckb {
+    display: none;
+}
+
+.patternsLabel {
+    display: flex;
+    justify-content: space-between;
+}
+
+.listOfPatterns-container {
+    display: none;
+}
+

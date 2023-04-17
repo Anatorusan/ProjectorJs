@@ -24,15 +24,15 @@
                     <h2 class="appMainSection__heading">
                         Time flies... check how much has passed
                     </h2>
-                    <p class="appMainSection__instruction">
+                    <p class="appMainSection__instruction mild-black">
                         Choose the desired start date, end date and 
                         get the period of time passed inbetween. Use patters to move month/week forward or backward. 
                         Check options to adjust the calculation parameters.
                     </p>
                 </div>
                 <div class="history-container">
-                    <label for="historyBttn">History</label>
-                    <input type="checkbox" id="historyBttn">
+                    <label class="historyChckbLabel" for="historyBttn">History</label>
+                    <input class="historyChckb" type="checkbox" id="historyBttn">
                     <div class="historyTable-container">
                         <table class="historyTable">
                             <tr class = 'tableHeader'>
@@ -47,42 +47,44 @@
                 </div>
                 <div class="form-container">
                     <form action="" class="calculationForm">
-                        <div class="startDate-container">
-                            <input type="date" class="startDateInput" name="startDate">
-                            <div class="dateType-container">
+                        <div class="formItem-container">
+                            <div class="dateType-container mild-black">
                                 <p class="dateType">Start Date</p>
                             </div>
+                            <input type="date" class="startDateInput mild-black inputItem" name="startDate">
                         </div>
-                        <div class="endDate-container">
-                            <input type="date" class="endDateInput" name="endDate" disabled min="2023-05-03">
-                            <div class="dateType-container">
+                        <div class="formItem-container">
+                            <div class="dateType-container mild-black">
                                 <p class="dateType">End Date</p>
                             </div>
+                            <input type="date" class="endDateInput mild-black inputItem" name="endDate" disabled min="2023-05-03">
                         </div>
-                        <div class="resultDisplayContainer">
+                        <div class="formItem-container mild-black">
                             <div class="result-container">
-                                <p class="result__text">Period of time</p>
+                                <p class="result__text">Result</p>
                             </div>
                             <div class="unitTypeContainer">
                                 <p class="unitType">Day</p>
                             </div>
-                            <div class="resultIcon-container">
+                            <!-- <div class="resultIcon-container">
                                 <svg class="resultIcon" width="20" height="22" viewBox="0 0 20 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M7 0V2.2H13V0H15V2.2H19C19.2652 2.2 19.5196 2.31589 19.7071 2.52218C19.8946 2.72847 20 3.00826 20 3.3V20.9C20 21.1917 19.8946 21.4715 19.7071 21.6778C19.5196 21.8841 19.2652 22 19 22H1C0.734784 22 0.48043 21.8841 0.292893 21.6778C0.105357 21.4715 0 21.1917 0 20.9V3.3C0 3.00826 0.105357 2.72847 0.292893 2.52218C0.48043 2.31589 0.734784 2.2 1 2.2H5V0H7ZM18 9.9H2V19.8H18V9.9ZM13.036 11.1496L14.45 12.705L9.5 18.15L5.964 14.2604L7.38 12.705L9.501 15.0392L13.036 11.1496ZM5 4.4H2V7.7H18V4.4H15V5.5H13V4.4H7V5.5H5V4.4Z" fill="black" fill-opacity="0.6"/>
                                 </svg>
-                            </div>
+                            </div> -->
                         </div>
-                        <div class="patterns-container">
+                        <div class="patterns-container formItem-container mild-black">
+                            <div class="patternsLabel-container">
                             <label for="patterns" class="patternsLabel">
                                 <p class="patternsLabel__text">Patterns</p>
                                 <svg class="pattersLabel__icon" width="22px" height="22px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <rect fill="none" height="7" stroke="#000000" stroke-opacity="0.6" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="7" x="14.5" y="2.5"/>
-                                    <rect fill="none" height="7" stroke="#000000" stroke-opacity="0.6" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="7" x="14.5" y="14.5"/>
-                                    <rect fill="none" height="7" stroke="#000000" stroke-opacity="0.6" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="7" x="2.5" y="2.5"/>
-                                    <rect fill="none" height="7" stroke="#000000" stroke-opacity="0.6" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="7" x="2.5" y="14.5"/>
+                                    <rect fill="none" height="7" stroke="#438303" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="7" x="14.5" y="2.5"/>
+                                    <rect fill="none" height="7" stroke="#438303" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="7" x="14.5" y="14.5"/>
+                                    <rect fill="none" height="7" stroke="#438303" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="7" x="2.5" y="2.5"/>
+                                    <rect fill="none" height="7" stroke="#438303" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="7" x="2.5" y="14.5"/>
                                 </svg>
                             </label>
-                            <input type="checkbox" name="patterns" id="patterns">
+                            </div>
+                            <input class="patternsChckb" type="checkbox" name="patterns" id="patterns">
                             <div class="listOfPatterns-container">
                                 <div class="pattern-container">
                                     <div class="patterText-container">
