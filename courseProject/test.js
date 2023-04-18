@@ -1,5 +1,6 @@
 'use strict'
 
+//transferred
 const initialDateElement = document.getElementById('startDate');
 const endDateElement = document.getElementById('endDate');
 const calcButtnElement = document.getElementById('calcButtn');
@@ -12,10 +13,12 @@ const plusWeekButtnElement = document.getElementById('plusWeekButtn');
 const selectDayTypeElement = document.getElementById('selectDayType');
 const tableHeaderElement = document.querySelector('.tableHeader');
 
+//transferred
 const saveData = (key, value) => {
   localStorage.setItem(key, JSON.stringify(value));
 }
 
+//transferred
 const loadData = (key) => {
   const loadedData = JSON.parse(localStorage.getItem(key));
   return loadedData ? loadedData : [];
@@ -31,11 +34,13 @@ const unitsMap = {
 const dateDisplay = () => {
   endDateElement.value = initialDateElement.value;
 };
+
 const endDateActivator = () => {
   endDateElement.disabled = false;
   endDateElement.setAttribute('min', initialDateElement.value);
   console.log(initialDateElement.value);  
 }
+
 const initialDateLimiter = () => {
   initialDateElement.setAttribute('max', endDateElement.value);
 }
@@ -267,7 +272,7 @@ const resetMonthAddCounter = presetSwitcher.resetMonthAddCounter.bind(presetSwit
 
 initialDateElement.addEventListener('input', resetAllCounters);
 
-initialDateElement.addEventListener('input', endDateActivator);
+initialDateElement.addEventListener('input', endDateActivator); //transferred
 
 initialDateElement.addEventListener('input', plusMinusBtnAtivator);
 

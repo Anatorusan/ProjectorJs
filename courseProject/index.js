@@ -1,5 +1,8 @@
 'use strict'
 
+import { saveData } from './jsModules/ls.js';
+import { loadData } from './jsModules/ls.js';
+
 const initialDateElement = document.querySelector('.startDateInput'); //verified
 const endDateElement = document.querySelector('.endDateInput'); //verified
 const calcButtnElement = document.querySelector('#calcButtn'); //verified
@@ -12,3 +15,25 @@ const plusWeekButtnElement = document.querySelector('#plusWeekButtn'); //verifie
 const selectDayTypeElement = document.querySelector('#selectDayType'); //verified
 const tableHeaderElement = document.querySelector('.tableHeader'); //verified
 
+const endDateActivator = () => {
+    endDateElement.disabled = false;
+    endDateElement.setAttribute('min', initialDateElement.value);
+  }
+
+//continue here
+  const initialDateLimiter = () => {
+  initialDateElement.setAttribute('max', endDateElement.value);
+}
+  
+const listeners = () => {
+  initialDateElement.addEventListener('input', endDateActivator);
+  endDateElement.addEventListener('change', initialDateLimiter);
+}
+
+const startApp = () => {
+  console.log ('App started');
+  
+  listeners();
+}
+
+document.addEventListener('DOMContentLoaded', startApp); 
