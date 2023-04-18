@@ -20,31 +20,33 @@
                 </div>
             </header>
             <section class="appMainSection">
-                <div class="intro-container">
-                    <h2 class="appMainSection__heading">
-                        Time flies... check how much has passed
-                    </h2>
-                    <p class="appMainSection__instruction mild-black">
-                        Choose the desired start date, end date and 
-                        get the period of time passed inbetween. Use patters to move month/week forward or backward. 
-                        Check options to adjust the calculation parameters.
-                    </p>
-                </div>
-                <div class="history-container">
-                    <label class="historyChckbLabel" for="historyBttn">History</label>
-                    <input class="historyChckb" type="checkbox" id="historyBttn">
-                    <div class="historyTable-container">
-                        <table class="historyTable">
-                            <tr class = 'tableHeader'>
-                                <th>Start Date</th>
-                                <th>End Date</th>
-                                <th>Number</th>
-                                <th>Units</th>
-                                <th>Included Days</th>
-                            </tr>
-                        </table>
+                
+                    <div class="intro-container">
+                        <h2 class="appMainSection__heading">
+                            Time flies... check how much has passed
+                        </h2>
+                        <p class="appMainSection__instruction mild-black">
+                            Choose the desired start date, end date and 
+                            get the period of time passed inbetween. Use patters to move month/week forward or backward. 
+                            Check options to adjust the calculation parameters.
+                        </p>
                     </div>
-                </div>
+                    <div class="history-container">
+                        <label class="historyChckbLabel" for="historyBttn">History</label>
+                        <input class="historyChckb" type="checkbox" id="historyBttn">
+                        <div class="historyTable-container">
+                            <table class="historyTable">
+                                <tr class = 'tableHeader'>
+                                    <th>Start Date</th>
+                                    <th>End Date</th>
+                                    <th>Number</th>
+                                    <th>Units</th>
+                                    <th>Included Days</th>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                
                 <div class="form-container">
                     <form action="" class="calculationForm">
                         <div class="formItem-container">
@@ -72,17 +74,18 @@
                                 </svg>
                             </div> -->
                         </div>
-                        <div class="patterns-container formItem-container mild-black">
+                        <!-- patterns -->
+                        <div class="formItem-container patternsBlock-container mild-black">
                             <div class="patternsLabel-container">
-                            <label for="patterns" class="patternsLabel">
-                                <p class="patternsLabel__text">Patterns</p>
-                                <svg class="pattersLabel__icon" width="22px" height="22px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <rect fill="none" height="7" stroke="#438303" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="7" x="14.5" y="2.5"/>
-                                    <rect fill="none" height="7" stroke="#438303" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="7" x="14.5" y="14.5"/>
-                                    <rect fill="none" height="7" stroke="#438303" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="7" x="2.5" y="2.5"/>
-                                    <rect fill="none" height="7" stroke="#438303" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="7" x="2.5" y="14.5"/>
-                                </svg>
-                            </label>
+                                <label for="patterns" class="patternsLabel">
+                                    <p class="patternsLabel__text">Patterns</p>
+                                    <svg class="pattersLabel__icon" width="22px" height="22px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <rect fill="none" height="7" stroke="#438303" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="7" x="14.5" y="2.5"/>
+                                        <rect fill="none" height="7" stroke="#438303" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="7" x="14.5" y="14.5"/>
+                                        <rect fill="none" height="7" stroke="#438303" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="7" x="2.5" y="2.5"/>
+                                        <rect fill="none" height="7" stroke="#438303" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="7" x="2.5" y="14.5"/>
+                                    </svg>
+                                </label>
                             </div>
                             <input class="patternsChckb" type="checkbox" name="patterns" id="patterns">
                             <div class="listOfPatterns-container">
@@ -92,10 +95,10 @@
                                     </div>
                                     <div class="patternButtons-container">
                                         <div class="plusButton-container">
-                                            <input class="patternButton" id="plusMonthButtn" type="button" value="+" disabled>
+                                            <input class="patternButton mild-black" id="plusMonthButtn" type="button" value="+" disabled>
                                         </div>
                                         <div class="minusButton-container">
-                                            <input class="patternButton" id="minusMonthButtn" type="button" value="-" disabled>
+                                            <input class="patternButton mild-black" id="minusMonthButtn" type="button" value="-" disabled>
                                         </div>
                                     </div>
                                 </div>
@@ -105,49 +108,53 @@
                                     </div>
                                     <div class="patternButtons-container">
                                         <div class="plusButton-container">
-                                            <input class="patternButton" id="plusWeekButtn" type="button" value="+" disabled>
+                                            <input class="patternButton mild-black" id="plusWeekButtn" type="button" value="+" disabled>
                                         </div>
                                         <div class="minusButton-container">
-                                            <input class="patternButton" id="minusWeekButtn" type="button" value="-" disabled>
+                                            <input class="patternButton mild-black" id="minusWeekButtn" type="button" value="-" disabled>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="options-container">
-                            <label for="options" class="optionsLabel">
-                                <p class="optionsLabel__text">Options</p>
-                                <svg class="optionsLabel__icon" width="20" height="18" viewBox="0 0 20 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M4.44444 0C5.42986 0.000124886 6.38731 0.312167 7.16642 0.887114C7.94554 1.46206 8.50217 2.26734 8.74889 3.17647H17.7778V5.29412H8.74889C8.47586 6.28993 7.83182 7.157 6.93703 7.73344C6.04224 8.30987 4.95788 8.55625 3.88642 8.42658C2.81496 8.29691 1.82965 7.80004 1.11448 7.02877C0.399299 6.25749 0.00315111 5.26453 0 4.23529C0 3.11202 0.468252 2.03476 1.30175 1.24049C2.13524 0.446217 3.2657 0 4.44444 0ZM4.44444 6.35294C5.03381 6.35294 5.59905 6.12983 6.01579 5.7327C6.43254 5.33556 6.66667 4.79693 6.66667 4.23529C6.66667 3.67366 6.43254 3.13503 6.01579 2.73789C5.59905 2.34076 5.03381 2.11765 4.44444 2.11765C3.85507 2.11765 3.28984 2.34076 2.8731 2.73789C2.45635 3.13503 2.22222 3.67366 2.22222 4.23529C2.22222 4.79693 2.45635 5.33556 2.8731 5.7327C3.28984 6.12983 3.85507 6.35294 4.44444 6.35294ZM15.5556 18C14.5701 17.9999 13.6127 17.6878 12.8336 17.1129C12.0545 16.5379 11.4978 15.7327 11.2511 14.8235H2.22222V12.7059H11.2511C11.5241 11.7101 12.1682 10.843 13.063 10.2666C13.9578 9.69013 15.0421 9.44375 16.1136 9.57342C17.185 9.70309 18.1704 10.2 18.8855 10.9712C19.6007 11.7425 19.9968 12.7355 20 13.7647C20 14.888 19.5317 15.9652 18.6983 16.7595C17.8648 17.5538 16.7343 18 15.5556 18ZM15.5556 15.8824C16.1449 15.8824 16.7102 15.6592 17.1269 15.2621C17.5437 14.865 17.7778 14.3263 17.7778 13.7647C17.7778 13.2031 17.5437 12.6644 17.1269 12.2673C16.7102 11.8702 16.1449 11.6471 15.5556 11.6471C14.9662 11.6471 14.401 11.8702 13.9842 12.2673C13.5675 12.6644 13.3333 13.2031 13.3333 13.7647C13.3333 14.3263 13.5675 14.865 13.9842 15.2621C14.401 15.6592 14.9662 15.8824 15.5556 15.8824Z" fill="black" fill-opacity="0.6"/>
-                                </svg>
-                            </label>
-                            <input type="checkbox" name="options" id="options">
+                        <!-- options -->
+                        <div class="formItem-container options-container mild-black">
+                            <div class="patternsLabel-container">
+                                <label class="optionsLabel" for="options" class="optionsLabel">
+                                    <p class="optionsLabel__text">Options</p>
+                                    <svg class="optionsLabel__icon" width="20" height="18" viewBox="0 0 20 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M4.44444 0C5.42986 0.000124886 6.38731 0.312167 7.16642 0.887114C7.94554 1.46206 8.50217 2.26734 8.74889 3.17647H17.7778V5.29412H8.74889C8.47586 6.28993 7.83182 7.157 6.93703 7.73344C6.04224 8.30987 4.95788 8.55625 3.88642 8.42658C2.81496 8.29691 1.82965 7.80004 1.11448 7.02877C0.399299 6.25749 0.00315111 5.26453 0 4.23529C0 3.11202 0.468252 2.03476 1.30175 1.24049C2.13524 0.446217 3.2657 0 4.44444 0ZM4.44444 6.35294C5.03381 6.35294 5.59905 6.12983 6.01579 5.7327C6.43254 5.33556 6.66667 4.79693 6.66667 4.23529C6.66667 3.67366 6.43254 3.13503 6.01579 2.73789C5.59905 2.34076 5.03381 2.11765 4.44444 2.11765C3.85507 2.11765 3.28984 2.34076 2.8731 2.73789C2.45635 3.13503 2.22222 3.67366 2.22222 4.23529C2.22222 4.79693 2.45635 5.33556 2.8731 5.7327C3.28984 6.12983 3.85507 6.35294 4.44444 6.35294ZM15.5556 18C14.5701 17.9999 13.6127 17.6878 12.8336 17.1129C12.0545 16.5379 11.4978 15.7327 11.2511 14.8235H2.22222V12.7059H11.2511C11.5241 11.7101 12.1682 10.843 13.063 10.2666C13.9578 9.69013 15.0421 9.44375 16.1136 9.57342C17.185 9.70309 18.1704 10.2 18.8855 10.9712C19.6007 11.7425 19.9968 12.7355 20 13.7647C20 14.888 19.5317 15.9652 18.6983 16.7595C17.8648 17.5538 16.7343 18 15.5556 18ZM15.5556 15.8824C16.1449 15.8824 16.7102 15.6592 17.1269 15.2621C17.5437 14.865 17.7778 14.3263 17.7778 13.7647C17.7778 13.2031 17.5437 12.6644 17.1269 12.2673C16.7102 11.8702 16.1449 11.6471 15.5556 11.6471C14.9662 11.6471 14.401 11.8702 13.9842 12.2673C13.5675 12.6644 13.3333 13.2031 13.3333 13.7647C13.3333 14.3263 13.5675 14.865 13.9842 15.2621C14.401 15.6592 14.9662 15.8824 15.5556 15.8824Z" fill="#438303" fill-opacity="1"/>
+                                    </svg>
+                                </label>
+                            </div>
+                            <input class = "optionsChckb" type="checkbox" name="options" id="options">
                             <div class="listOfOptions-container">
                                 <!-- select unit -->
                                 <div class="option-container">
+                                    
+                                    <div class="optionText-container">
+                                        <p class="optionText">Unit</p>
+                                    </div>
                                     <div class="select-container">
-                                        <select class="selectElement" id='selectUnit'>
+                                        <select class="selectElement mild-black" id='selectUnit'>
                                             <option value='86400000'>Days</option>
                                             <option value='3600000'>Hours</option>
                                             <option value='60000'>Minutes</option>
                                             <option value='1000'>Seconds</option>
                                         </select>
                                     </div>
-                                    <div class="optionText-container">
-                                        <p class="optionText">Unit</p>
-                                    </div>
                                 </div>
                                 <!-- select day type -->
                                 <div class="option-container">
+                                     <div class="optionText-container">
+                                        <p class="optionText">Include</p>
+                                    </div>
                                     <div class="select-container">
-                                        <select class="selectElement" id='selectDayType'>
+                                        <select class="selectElement mild-black" id='selectDayType'>
                                             <option value="All">All days</option>
                                             <option value="Business">Business days</option>
                                             <option value="Weekend">Weekends</option>
                                         </select>
-                                    </div>
-                                    <div class="optionText-container">
-                                        <p class="optionText">Unit</p>
                                     </div>
                                 </div>
                             </div>
@@ -157,8 +164,8 @@
                             <input class="calculateButton" id="calcButtn" type="button" value="Calculate">
                         </div>
                         <!-- reset button -->
-                        <div class="wideButton-container">
-                            <input class="resetButton" type="reset" value="Reset">
+                        <div class="wideButton-container resetButton-contianer">
+                            <input class="calculateButton resetButton" type="reset" value="Reset">
                         </div>
                     </form>
                 </div>
