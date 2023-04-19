@@ -35,16 +35,19 @@ const dateDisplay = () => {
   endDateElement.value = initialDateElement.value;
 };
 
+//transferred
 const endDateActivator = () => {
   endDateElement.disabled = false;
   endDateElement.setAttribute('min', initialDateElement.value);
   console.log(initialDateElement.value);  
 }
 
+//transferred
 const initialDateLimiter = () => {
   initialDateElement.setAttribute('max', endDateElement.value);
 }
 
+//transferred
 const termDurationGenerator = () => {
   let start = new Date(initialDateElement.value);
   start.setDate(start.getDate() + 1); 
