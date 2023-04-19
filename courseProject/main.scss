@@ -1,4 +1,19 @@
-@import "/fonts/fonts";
+@font-face {
+    font-family: "Trajanus Roman";
+    src: url('/fonts/TrajanusRoman-6aEq.ttf') format('ttf');
+}
+
+@font-face {
+    font-family: "mont";
+    src: url('/fonts/Mont-Regular.woff') format('woff');
+}
+
+@font-face {
+    font-family: "namu";
+    src: url('/fonts/NAMU-1990.ttf');
+}
+
+// @import "//fonts";
 
 // general styles
 *,
@@ -10,7 +25,7 @@
 }
 
 body {
-    font-family: "namu", Verdana, Geneva, Tahoma, sans-serif;
+    font-family: "namu";
     font-weight: 800;
 }
 

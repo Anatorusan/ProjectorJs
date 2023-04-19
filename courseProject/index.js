@@ -14,20 +14,28 @@ const minusWeekButtnElement = document.querySelector('#minusWeekButtn'); //verif
 const plusWeekButtnElement = document.querySelector('#plusWeekButtn'); //verified
 const selectDayTypeElement = document.querySelector('#selectDayType'); //verified
 const tableHeaderElement = document.querySelector('.tableHeader'); //verified
+const resetButtnElement = document.querySelector('#resButtn'); //verified
 
 const endDateActivator = () => {
-    endDateElement.disabled = false;
-    endDateElement.setAttribute('min', initialDateElement.value);
-  }
+  endDateElement.disabled = false;
+  endDateElement.setAttribute('min', initialDateElement.value);
+}
 
-//continue here
-  const initialDateLimiter = () => {
+const initialDateLimiter = () => {
   initialDateElement.setAttribute('max', endDateElement.value);
 }
-  
+
+const limitersReset = () => {
+  endDateElement.setAttribute('min', '');
+  initialDateElement.setAttribute('max', '');
+}
+
+
+
 const listeners = () => {
   initialDateElement.addEventListener('input', endDateActivator);
   endDateElement.addEventListener('change', initialDateLimiter);
+  resetButtnElement.addEventListener('click', limitersReset);
 }
 
 const startApp = () => {
