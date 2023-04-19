@@ -217,7 +217,7 @@ html {
 }
 
 .historyChckb:checked ~.historyTable-container {
-    max-height: 100px;
+    max-height: 300px;
 }
 
 //patterns action
@@ -232,6 +232,7 @@ html {
 .patternsLabel {
     display: flex;
     justify-content: space-between;
+    cursor: pointer;
 }
 
 .listOfPatterns-container {
@@ -242,7 +243,7 @@ html {
 
 .patternsChckb:checked ~ .listOfPatterns-container {
     display: block;
-    max-height: 200px;
+    max-height: 400px;
 }
 
 .patternsLabel-container {
@@ -270,6 +271,14 @@ html {
     line-height: 100%;
     min-width: 20px;
     min-height: 20px;
+    cursor: pointer;
+    border: none;
+    background-color: #7a7a7a6c;
+    border-radius: 3px;
+}
+
+.patternButton:disabled {
+    background-color: #ececef;
 }
 
 //options action
@@ -285,6 +294,7 @@ html {
 .optionsLabel {
     display: flex;
     justify-content: space-between;
+    cursor: pointer;
 }
 
 .listOfOptions-container {

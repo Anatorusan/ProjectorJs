@@ -24,6 +24,7 @@ const loadData = (key) => {
   return loadedData ? loadedData : [];
 }
 
+//transferred
 const unitsMap = {
   '86400000' : 'Days',
   '3600000' : 'Hours',
@@ -72,6 +73,7 @@ const termDurationGenerator = () => {
   return finish - start + dayMilliseconds;
 }
 
+//transferred
 const calculate = () => {
   if ((endDateElement.value === '') || (endDateElement.value < initialDateElement.value)) {
     return;
@@ -79,6 +81,7 @@ const calculate = () => {
   displayElement.innerHTML = termDurationGenerator() / Number(unitSelectorElement.value);
 }
 
+//transferred
 const plusMinusBtnAtivator = () => {
   plusMonthButtnElement.disabled = false;
   minusMonthButtnElement.disabled = false;
@@ -86,6 +89,7 @@ const plusMinusBtnAtivator = () => {
   minusWeekButtnElement.disabled = false;
 }
 
+//transferred
 const presetSwitcher = {
   weekAddCounter: 1,
   monthAddCounter: 1,
@@ -258,6 +262,7 @@ const startAppFunc = () => {
 
 document.addEventListener('DOMContentLoaded', startAppFunc);
 
+//transferred
 const resetAllCounters = presetSwitcher.resetAllCounters.bind(presetSwitcher);
 
 const addMonth = presetSwitcher.addMonth.bind(presetSwitcher);
@@ -277,29 +282,29 @@ initialDateElement.addEventListener('input', resetAllCounters);
 
 initialDateElement.addEventListener('input', endDateActivator); //transferred
 
-initialDateElement.addEventListener('input', plusMinusBtnAtivator);
+initialDateElement.addEventListener('input', plusMinusBtnAtivator); //transferred
 
-endDateElement.addEventListener('change', initialDateLimiter);
+endDateElement.addEventListener('change', initialDateLimiter); //transferred
 
-calcButtnElement.addEventListener('click', calculate);
+calcButtnElement.addEventListener('click', calculate); //transferred
 
-calcButtnElement.addEventListener('click', historyGenerator);
+calcButtnElement.addEventListener('click', historyGenerator); //transferred
 
-calcButtnElement.addEventListener('click', historyRenderer);
+calcButtnElement.addEventListener('click', historyRenderer); //transferred
 
-plusMonthButtnElement.addEventListener('click', addMonth);
+plusMonthButtnElement.addEventListener('click', addMonth); //transferred
 
-plusMonthButtnElement.addEventListener('click', resetWeekAddCounter);
+plusMonthButtnElement.addEventListener('click', resetWeekAddCounter); //transferred
 
-plusWeekButtnElement.addEventListener('click', addWeek);
+plusWeekButtnElement.addEventListener('click', addWeek); //transferred
 
-plusWeekButtnElement.addEventListener('click', resetMonthAddCounter);
+plusWeekButtnElement.addEventListener('click', resetMonthAddCounter); //transferred
 
-minusMonthButtnElement.addEventListener('click', substrMonth);
+minusMonthButtnElement.addEventListener('click', substrMonth); //transferred
 
-minusMonthButtnElement.addEventListener('click', resetAllCounters);
+minusMonthButtnElement.addEventListener('click', resetAllCounters); //transferred
 
-minusWeekButtnElement.addEventListener('click', substrWeek);
+minusWeekButtnElement.addEventListener('click', substrWeek); //transferred
 
 minusWeekButtnElement.addEventListener('click', resetAllCounters);
 
