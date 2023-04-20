@@ -29,10 +29,10 @@ const formElement = document.querySelector('form');
 const history = loadData('historyRecord');
 
 const unitsMap = {
-  '86400000' : 'Days',
-  '3600000' : 'Hours',
-  '60000' : 'Minutes',
-  '1000' : 'Seconds'
+  '86400000' : 'days',
+  '3600000' : 'hours',
+  '60000' : 'minutes',
+  '1000' : 'seconds'
 }
 
 const endDateActivator = () => {
@@ -122,8 +122,8 @@ const historyGenerator = () => {
   if (displayElement.innerHTML === 'Result') {
     return
   }
-  history.unshift({'startDate' : initialDateElement.value,
-  'endDate' : endDateElement.value,
+  history.unshift({'startDate' : initialDateElement.value.split('-').reverse().join('-'),
+  'endDate' : endDateElement.value.split('-').reverse().join('-'),
   'number' : displayElement.innerHTML,
   'units' : unitsMap[unitSelectorElement.value],
   'includeDays' : selectDayTypeElement.value})

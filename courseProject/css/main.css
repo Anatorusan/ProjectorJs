@@ -206,6 +206,20 @@ html {
   max-height: 300px;
 }
 
+.historyTable {
+  width: 100%;
+  background-color: #FFF;
+  border-radius: 6px;
+  text-align: left;
+  padding: 15px;
+  padding-top: 0;
+}
+
+th {
+  height: 50px;
+  color: #000;
+}
+
 .patternsBlock-container {
   display: block;
 }
