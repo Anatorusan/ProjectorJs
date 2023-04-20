@@ -2,93 +2,68 @@
 
 import { endDateElement } from "/index.js";
 import { initialDateElement } from "/index.js";
+import { initialDateLimiter } from "/index.js";
 
 const presetSwitcher = {
-    weekAddCounter: 1,
-    monthAddCounter: 1,
-    
-    addZero(stringToPad, targetLength = 2, padWithString = `0`) {
-          return `${stringToPad}`.padStart(targetLength, padWithString);
-    },
+  weekAddCounter: 1,
+  monthAddCounter: 1,
   
-    addMonth() {
-      console.log(`end date: ${endDateElement.value} start date: ${initialDateElement.value}`);
-      
-      const baseDateObj = endDateElement.value === '' ? new Date(initialDateElement.value) : new Date(endDateElement.value);
-      baseDateObj.setMonth(baseDateObj.getMonth() + this.monthAddCounter);
-      endDateElement.value = `${baseDateObj.getFullYear()}-${(this.addZero(baseDateObj.getMonth()+1))}-${this.addZero(baseDateObj.getDate())}`;
-      
-      console.log(this.monthAddCounter);
-  
-      this.monthAddCounter += 1;
-  
-      initialDateElement.setAttribute('max', endDateElement.value);
-  
-      console.log('initial date limited');
-      console.log(`end date: ${endDateElement.value} start date: ${initialDateElement.value}`);
-    },
-  
-    substrMonth() {
-      console.log(`end date: ${endDateElement.value} start date: ${initialDateElement.value}`);
-      
-      const startDateObj = new Date(initialDateElement.value);
-      const endDateObj = new Date(endDateElement.value);
-      if (endDateObj > startDateObj) {
-        endDateObj.setMonth(endDateObj.getMonth() - 1);
-        endDateElement.value = `${endDateObj.getFullYear()}-${(this.addZero(endDateObj.getMonth()+1))}-${this.addZero(endDateObj.getDate())}`;
-  
-        initialDateElement.setAttribute('max', endDateElement.value);
-        return
-      }
+  addZero(stringToPad, targetLength = 2, padWithString = `0`) {
+    return `${stringToPad}`.padStart(targetLength, padWithString);
+  },
+
+  addMonth() {     
+    const baseDateObj = endDateElement.value === '' ? new Date(initialDateElement.value) : new Date(endDateElement.value);
+    baseDateObj.setMonth(baseDateObj.getMonth() + this.monthAddCounter);
+    endDateElement.value = `${baseDateObj.getFullYear()}-${(this.addZero(baseDateObj.getMonth()+1))}-${this.addZero(baseDateObj.getDate())}`;  
+    this.monthAddCounter += 1;
+    initialDateLimiter();
+  },
+
+  substrMonth() {
+    const startDateObj = new Date(initialDateElement.value);
+    const endDateObj = new Date(endDateElement.value);
+    endDateObj.setMonth(endDateObj.getMonth() - 1);
+    if (endDateObj >= startDateObj) {
+      endDateElement.value = `${endDateObj.getFullYear()}-${(this.addZero(endDateObj.getMonth()+1))}-${this.addZero(endDateObj.getDate())}`;
+      initialDateLimiter();
       return
-    },
-  
-    addWeek() {
-      console.log(`end date: ${endDateElement.value} start date: ${initialDateElement.value}`);
-      
-      const baseDateObj = endDateElement.value === '' ? new Date(initialDateElement.value) : new Date(endDateElement.value);
-      baseDateObj.setDate(baseDateObj.getDate() + this.weekAddCounter * 7);
-      endDateElement.value = `${baseDateObj.getFullYear()}-${(this.addZero(baseDateObj.getMonth()+1))}-${this.addZero(baseDateObj.getDate())}`;
-      
-      console.log(this.weekAddCounter);
-  
-      this.weekAddCounter += 1;
-  
-      initialDateElement.setAttribute('max', endDateElement.value);
-  
-      console.log('initial date limited');
-      console.log(`end date: ${endDateElement.value} start date: ${initialDateElement.value}`);
-    },
-  
-    substrWeek() {
-      console.log(`end date: ${endDateElement.value} start date: ${initialDateElement.value}`);
-      
-      const startDateObj = new Date(initialDateElement.value);
-      const endDateObj = new Date(endDateElement.value);
-      if (endDateObj > startDateObj) {
-        console.log('substracting week');
-        endDateObj.setDate(endDateObj.getDate() - 7);
-        endDateElement.value = `${endDateObj.getFullYear()}-${(this.addZero(endDateObj.getMonth()+1))}-${this.addZero(endDateObj.getDate())}`;
-  
-        initialDateElement.setAttribute('max', endDateElement.value);
-        return
-      }
-      return
-    },
-  
-    resetAllCounters() {
-      console.log('reset counter called');
-      this.monthAddCounter = 1;
-      this.weekAddCounter = 1;
-    },
-  
-    resetMonthAddCounter() {
-      this.monthAddCounter = 1;
-    },
-  
-    resetWeekAddCounter() {
-      this.weekAddCounter = 1;
     }
+    return
+  },
+
+  addWeek() {   
+    const baseDateObj = endDateElement.value === '' ? new Date(initialDateElement.value) : new Date(endDateElement.value);
+    baseDateObj.setDate(baseDateObj.getDate() + this.weekAddCounter * 7);
+    endDateElement.value = `${baseDateObj.getFullYear()}-${(this.addZero(baseDateObj.getMonth()+1))}-${this.addZero(baseDateObj.getDate())}`;
+    this.weekAddCounter += 1;
+    initialDateLimiter();
+  },
+
+  substrWeek() {      
+    const startDateObj = new Date(initialDateElement.value);
+    const endDateObj = new Date(endDateElement.value);
+    endDateObj.setDate(endDateObj.getDate() - 7);
+    if (endDateObj >= startDateObj) {
+      endDateElement.value = `${endDateObj.getFullYear()}-${(this.addZero(endDateObj.getMonth()+1))}-${this.addZero(endDateObj.getDate())}`;
+      initialDateLimiter();
+      return
+    }
+    return
+  },
+
+  resetAllCounters() {
+    this.monthAddCounter = 1;
+    this.weekAddCounter = 1;
+  },
+
+  resetMonthAddCounter() {
+    this.monthAddCounter = 1;
+  },
+
+  resetWeekAddCounter() {
+    this.weekAddCounter = 1;
+  }
 }
 
 export const resetAllCounters = presetSwitcher.resetAllCounters.bind(presetSwitcher);

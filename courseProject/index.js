@@ -23,6 +23,8 @@ const selectDayTypeElement = document.querySelector('#selectDayType'); //verifie
 const tableHeaderElement = document.querySelector('.tableHeader'); //verified
 const resetButtnElement = document.querySelector('#resButtn'); //verified
 const unitTypeElement = document.querySelector('.unitType'); //verified
+const formElement = document.querySelector('form');
+
 
 const history = loadData('historyRecord');
 
@@ -38,7 +40,7 @@ const endDateActivator = () => {
   endDateElement.setAttribute('min', initialDateElement.value);
 }
 
-const initialDateLimiter = () => {
+export const initialDateLimiter = () => {
   initialDateElement.setAttribute('max', endDateElement.value);
 }
 
@@ -100,18 +102,26 @@ const plusMinusBtnActivator = () => {
   minusWeekButtnElement.disabled = false;
 }
 
-const plusMinusBtnDisabler = () => {
+const BtnDisabler = () => {
   plusMonthButtnElement.disabled = true;
   minusMonthButtnElement.disabled = true;
   plusWeekButtnElement.disabled = true;
   minusWeekButtnElement.disabled = true;
+  calcButtnElement.disabled = true;
+}
+
+const calcButtonCheck = () => {
+  if (endDateElement.value !== '' && initialDateElement.value !== '') {
+    calcButtnElement.disabled = false;
+  } else {
+    calcButtnElement.disabled = true;
+  }
 }
 
 const historyGenerator = () => {
-  if (!displayElement.innerHTML) {
+  if (displayElement.innerHTML === 'Result') {
     return
   }
-
   history.unshift({'startDate' : initialDateElement.value,
   'endDate' : endDateElement.value,
   'number' : displayElement.innerHTML,
@@ -121,20 +131,15 @@ const historyGenerator = () => {
     history.pop();
   }
   console.log(history);
-
   saveData('historyRecord', history);
 }
 
 const historyRenderer = () => {
-  if (!displayElement.innerHTML) {
+  if (displayElement.innerHTML === 'Result') {
     return
   }
   const loadedHistory = loadData('historyRecord');
-
-  console.log(loadedHistory);
-
   if (loadedHistory){
-    
       const historyRecordElement = document.createElement('tr');
       historyRecordElement.innerHTML = `
       <td class="tableCell">${loadedHistory[0]['startDate']}</td>
@@ -143,7 +148,7 @@ const historyRenderer = () => {
       <td class="tableCell">${loadedHistory[0]['units']}</td>
       <td class="tableCell">${loadedHistory[0]['includeDays']}</td>`;
       tableHeaderElement.after(historyRecordElement);
-      if (loadedHistory.length > 10) {
+      if (loadedHistory.length >= 10) {
         const lastRow = document.querySelector('tr:last-child');
         lastRow.remove();
       }
@@ -165,27 +170,24 @@ const startHistoryRenderer = () => {
       <td class="tableCell">${record['units']}</td>
       <td class="tableCell">${record['includeDays']}</td>`;
       tableHeaderElement.after(historyRecordElement);
-      if (loadedStartHistory.length > 10) {
-        const lastRow = document.querySelector('tr:last-child');
-        lastRow.remove();
-      }
     })
   } else {
     return;
   }
 }
 
-
-
 const listeners = () => {
+  formElement.addEventListener('click', calcButtonCheck);
   initialDateElement.addEventListener('input', endDateActivator);
   initialDateElement.addEventListener('input', plusMinusBtnActivator);
+  initialDateElement.addEventListener('change', calcButtonCheck); 
   endDateElement.addEventListener('change', initialDateLimiter);
+  endDateElement.addEventListener('change', calcButtonCheck); 
   resetButtnElement.addEventListener('click', limitersReset);
   resetButtnElement.addEventListener('click', resultReset);
   resetButtnElement.addEventListener('click', endDateDeactivator);
   resetButtnElement.addEventListener('click', unitTypeReset);
-  resetButtnElement.addEventListener('click', plusMinusBtnDisabler);
+  resetButtnElement.addEventListener('click', BtnDisabler);
   calcButtnElement.addEventListener('click', calculate);
   calcButtnElement.addEventListener('click', unitTypeIndicator);
   calcButtnElement.addEventListener('click', historyGenerator);
@@ -202,7 +204,6 @@ const listeners = () => {
 
 const startApp = () => {
   console.log ('App started');
-  
   listeners();
   startHistoryRenderer();
 }
