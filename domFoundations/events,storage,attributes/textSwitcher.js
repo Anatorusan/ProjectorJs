@@ -1,12 +1,12 @@
-import { btnOnOff } from "./initialPageRenderer.js";
-import { dateOnOff } from "./initialPageRenderer.js";
-import { textOutputdocument } from "./initialPageRenderer.js";
+import { btnOnOffElement } from "./initialPageRenderer.js";
+import { dateOnOffElement } from "./initialPageRenderer.js";
+import { dateOutputElement } from "./initialPageRenderer.js";
 import { saveData } from "./storage.js";
 
 export const textSwitcher = (check) => {
-    btnOnOff.innerHTML = check() ? 'Turn On' : 'Turn Off';
-    saveData('btnText', btnOnOff.innerHTML);
-    dateOnOff.innerHTML = !check() ? 'on' : 'off';
-    saveData('dateText', dateOnOff.innerHTML);
-    textOutputdocument.style.visibility = localStorage.length ? 'visible' : 'hidden'; 
+    btnOnOffElement.innerHTML = check() ? 'Turn On' : 'Turn Off';
+    saveData('btnText', btnOnOffElement.innerHTML);
+    dateOnOffElement.innerHTML = !check() ? 'on' : 'off';
+    saveData('dateText', dateOnOffElement.innerHTML);
+    dateOutputElement.style.visibility = localStorage.length ? 'visible' : 'hidden'; 
 }

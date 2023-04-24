@@ -1,5 +1,5 @@
-import { timeText } from "./initialPageRenderer.js";
-import { dateText } from "./initialPageRenderer.js";
+import { timeTextElement } from "./initialPageRenderer.js";
+import { dateTextElement } from "./initialPageRenderer.js";
 import { saveData } from "./storage.js";
 import { loadData } from "./storage.js";
 
@@ -20,6 +20,6 @@ export const renderDate = () => {
         addZero(currentDate.getSeconds())}`
     saveData('time', time);
 
-    dateText.innerHTML = loadData('date');
-    timeText.innerHTML = loadData('time');
+    dateTextElement.innerHTML = loadData('date');
+    timeTextElement.innerHTML = loadData('time');
 }
