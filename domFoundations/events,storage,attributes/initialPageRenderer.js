@@ -9,11 +9,11 @@ export const timeTextElement = document.querySelector('.time');
 export const dateOutputElement= document.querySelector('.dateOutput');
 
 export const startStateRenderer = () => {
-    backgrElement.style.backgroundColor = 'background-color' in localStorage ? loadData('background-color') : '#FFF';
-    dateFieldElement.style.color = 'date-color' in localStorage ? loadData('date-color') : '#000';
-    btnOnOffElement.innerHTML = 'btnText' in localStorage ? loadData('btnText') : 'Turn Off';
-    dateOnOffElement.innerHTML = 'dateText' in localStorage ? loadData('dateText') : 'on';
-    dateTextElement.innerHTML = 'date' in localStorage ? loadData('date') : '00-00-0000';
-    timeTextElement.innerHTML = 'time' in localStorage ? loadData('time') : '00:00:00';
+    backgrElement.style.backgroundColor = loadData('background-color', '#FFF');
+    dateFieldElement.style.color = loadData('date-color', '#000');
+    btnOnOffElement.innerHTML = loadData('btnText', 'Turn Off');
+    dateOnOffElement.innerHTML = loadData('dateText', 'on');
+    dateTextElement.innerHTML = loadData('date', '00-00-0000');
+    timeTextElement.innerHTML = loadData('time', '00:00:00');
     dateOutputElement.style.visibility = localStorage.length ? 'visible' : 'hidden';
 }
