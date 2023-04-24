@@ -8,4 +8,4 @@ const sectionFirstChld = document.getElementsByTagName('section')[0].firstElemen
 const fifthListElem = document.querySelectorAll('li')[4];
 
 //для елементу з класом 'hatredLevelBlock'
-const hatredBlock = document.getElementsByClassName('hatredLevelBlock')[0];
+const hatredBlock = document.querySelector('.hatredLevelBlock');
