@@ -5,7 +5,6 @@ const trigBox = {
     trigger: 'trigger' in localStorage ? loadData('trigger'): 'on',
     trigSwitch() {
         this.trigger = this.trigger === 'on' ? '' : 'on';
-        console.log(`Trigger value: ${this.trigger}`);
         saveData('trigger', this.trigger);
     },
     trigStatusCheck() {
@@ -13,5 +12,5 @@ const trigBox = {
     }
 }
 
-export const trigCheck = trigBox.trigStatusCheck.bind(trigBox)
+export const trigCheck = trigBox.trigStatusCheck.bind(trigBox);
 export const securedTrigSwitch = trigBox.trigSwitch.bind(trigBox);
